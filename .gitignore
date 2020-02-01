@@ -3,10 +3,12 @@
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
 Robot Boxing/[Ll]ibrary/
+/[Ll]ibrary/
 Robot Boxing/[Tt]emp/
 Robot Boxing/[Oo]bj/
 Robot Boxing/[Bb]uild/
 Robot Boxing/[Bb]uilds/
+/[Bb]uilds/
 Robot Boxing/[Ll]ogs/
 Robot Boxing/[Mm]emoryCaptures/
 
