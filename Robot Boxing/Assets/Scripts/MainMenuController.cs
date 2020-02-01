@@ -8,6 +8,7 @@ public class MainMenuController : MonoBehaviour
     public List<GameObject> Menus = new List<GameObject>();
     private Stack<GameObject> menuHistory = new Stack<GameObject>();
     private GameObject currentMenu;
+    public string LoadedLevelName;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,6 @@ public class MainMenuController : MonoBehaviour
 
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("", UnityEngine.SceneManagement.LoadSceneMode.Single);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(LoadedLevelName, UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 }
