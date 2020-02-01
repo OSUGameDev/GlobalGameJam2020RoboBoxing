@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
 
     public static GameController Instance { get { return _instance; } }
 
+    public float testSkill = 0;
+
 
     private void Start()
     {
