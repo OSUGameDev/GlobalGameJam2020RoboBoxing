@@ -2,13 +2,15 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
+Robot Boxing/[Ll]ibrary/
 /[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
+Robot Boxing/[Tt]emp/
+Robot Boxing/[Oo]bj/
+Robot Boxing/[Bb]uild/
+Robot Boxing/[Bb]uilds/
 /[Bb]uilds/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
+Robot Boxing/[Ll]ogs/
+Robot Boxing/[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
