@@ -38,7 +38,7 @@ public class SpringManager : MonoBehaviour
             currentAnimationTime += Time.deltaTime;
             if(currentAnimationTime >= AnimationTime)
             {
-                GameController.Instance.player.ModifyArm(.5f);
+                GameController.Instance.player.ModifyArm(50f);
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
             }
         }

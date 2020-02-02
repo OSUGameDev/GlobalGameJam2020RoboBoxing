@@ -15,6 +15,7 @@ TagManager:
   - Enemy Gauge
   - Player Gauge
   - Timer Gauge
+  - Match Gauge
   layers:
   - Default
   - TransparentFX

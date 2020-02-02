@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject playerGauge;
     [SerializeField] private GameObject opponentGauge;
     [SerializeField] private GameObject timerGauge;
+    [SerializeField] private GameObject roundGauge;
 
     [Header("Fight State")]
     public float difficulty = 1;
@@ -37,6 +38,7 @@ public class GameController : MonoBehaviour
         playerGauge = GameObject.FindGameObjectWithTag("Player Gauge");
         opponentGauge = GameObject.FindGameObjectWithTag("Enemy Gauge");
         timerGauge = GameObject.FindGameObjectWithTag("Timer Gauge");
+        roundGauge = GameObject.FindGameObjectWithTag("Match Gauge");
         player = GeneratePlayer();
         curOpponent = GenerateFighter();
         if (_instance != null && _instance != this)
@@ -49,6 +51,7 @@ public class GameController : MonoBehaviour
     }
 
     private void Update(){
+        roundGauge.transform.GetChild(0).GetComponent<Text>().text =  "Match " + (int)(match+1) + " | Round " + (int)(round+1);
         timerDisplay.enabled = true;
         string curScene = SceneManager.GetActiveScene().name;
         if(curScene != "Fight Scene" && curScene != "MainMenu"){
@@ -59,11 +62,15 @@ public class GameController : MonoBehaviour
         }
         else
             timerDisplay.text = "0:00";
+
+        HideUI();
+
+    }
+
+    public void CheckConditions(){
         IsPlayerWonFight();
         IsPlayerWonGame();
         IsPlayerLostGame();
-        HideUI();
-
     }
 
     public void LoadFightScene(){
@@ -134,6 +141,7 @@ public class GameController : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Fight Scene"){
             //Show Enemy Meter
             opponentGauge.SetActive(true);
+            roundGauge.SetActive(true);
             //Move Player Meter
             playerGauge.GetComponent<RectTransform>().anchorMin = new Vector2(0,0.5f);
             playerGauge.GetComponent<RectTransform>().anchorMax = new Vector2(0,0.5f);
@@ -143,6 +151,7 @@ public class GameController : MonoBehaviour
         }
         else if(SceneManager.GetActiveScene().name == "Repair Menu"){
             //Hide Enemy Meter
+            roundGauge.SetActive(false);
             opponentGauge.SetActive(false);
             //Move Player Meter
             playerGauge.SetActive(true);
@@ -166,6 +175,7 @@ public class GameController : MonoBehaviour
             timerGauge.GetComponent<RectTransform>().anchoredPosition3D= new Vector3(0,0,0);
         }
         else{
+            roundGauge.SetActive(false);
             //Hide Enemy Meter
             opponentGauge.SetActive(false);
             //Hide Player Meter

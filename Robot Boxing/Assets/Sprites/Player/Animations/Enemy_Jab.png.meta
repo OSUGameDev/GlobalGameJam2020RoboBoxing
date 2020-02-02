@@ -1,0 +1,271 @@
+fileFormatVersion: 2
+guid: a1652af1af4386d4aba701c48b4be523
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8095664774442384422
+    second: Enemy_Jab_0
+  - first:
+      213: 7214314808897292903
+    second: Enemy_Jab_1
+  - first:
+      213: 4119793674492126879
+    second: Enemy_Jab_2
+  - first:
+      213: -3910308553240952066
+    second: Enemy_Jab_3
+  - first:
+      213: 1600642618347881405
+    second: Enemy_Jab_4
+  - first:
+      213: -5169177027167561028
+    second: Enemy_Jab_5
+  - first:
+      213: -7042286384725006794
+    second: Enemy_Jab_6
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enemy_Jab_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 7
+        width: 44
+        height: 83
+      alignment: 9
+      pivot: {x: 0.17112988, y: 0.06995958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edbc3d6e408e826428f9a339d7695981
+      internalID: -8095664774442384422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Jab_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 7
+        width: 44
+        height: 83
+      alignment: 9
+      pivot: {x: 0.15651356, y: 0.07770807}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd084d951fbbd14fadb32dbd831dca6
+      internalID: 7214314808897292903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Jab_2
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 7
+        width: 49
+        height: 83
+      alignment: 9
+      pivot: {x: 0.15218867, y: 0.08158231}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0198e7f438fb2745b84cbd658d86c1e
+      internalID: 4119793674492126879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Jab_3
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 7
+        width: 44
+        height: 83
+      alignment: 9
+      pivot: {x: 0.1492053, y: 0.06995958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f789e59f32ffff049bbf22716d49fee1
+      internalID: -3910308553240952066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Jab_4
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 7
+        width: 49
+        height: 83
+      alignment: 9
+      pivot: {x: 0.14562614, y: 0.066085346}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9daf7868bc386de4c93bd2047dc07779
+      internalID: 1600642618347881405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Jab_5
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 7
+        width: 44
+        height: 83
+      alignment: 9
+      pivot: {x: 0.17113079, y: 0.07383383}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ad6a1e0fe73a04c9f8e1b8af46be7b
+      internalID: -5169177027167561028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_Jab_6
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 7
+        width: 44
+        height: 83
+      alignment: 9
+      pivot: {x: 0.17113079, y: 0.07770807}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e20a0e85ff375d34dbc87a612ec906f0
+      internalID: -7042286384725006794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

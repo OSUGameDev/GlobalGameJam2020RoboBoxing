@@ -24,14 +24,12 @@ public class FightController : MonoBehaviour
     [SerializeField] private Fighter opponent;
     [SerializeField] private Animator player_anim;
     [SerializeField] private Animator opponent_anim;
-    public GameObject enemyDamage;
 
 
 
     void Start()
     {
         GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        enemyDamage = GameObject.FindGameObjectWithTag("enemy damage");
         //Calls the TaskOnClick/TaskWithParameters/ButtonClicked method when you click the Button
         startButton.onClick.AddListener(StartButton);
         opponent = GameController.curOpponent;
@@ -96,12 +94,16 @@ public class FightController : MonoBehaviour
                     damage =AttackCircuits(GameController.player,opponent);
                     break;
             }
+            //Hit sounds go here
             numHits_player--;
             playerAttacked = true;
             attacking = true;
             //enemyDamage.GetCo= true;
             //enemyDamage.GetComponent<Text>().text = "" + (int)(damage);
-            player_anim.Play("player_punch");
+            if(attack >= 3)
+                player_anim.Play("player_punch");
+            else
+                player_anim.Play("player_jab");
         }
 
         if(numHits_opponent > 0 && !opponentAttacked && !attacking){
@@ -143,6 +145,7 @@ public class FightController : MonoBehaviour
                     damage =AttackCoolant(opponent,GameController.player);
                     break;
             }
+                opponent_anim.Play("enemy_jab");
                 numHits_opponent--;
                 opponentAttacked = true;
                 attacking = true;
@@ -151,6 +154,7 @@ public class FightController : MonoBehaviour
         if(numHits_opponent == 0 && numHits_player == 0 && timer <= 0){
             GameController.curOpponent = opponent;
             GameController.round++;
+            GameController.CheckConditions(); //If this passes then we will go to main menu instead
             GameController.LoadRepairMenu();
         }
     }
