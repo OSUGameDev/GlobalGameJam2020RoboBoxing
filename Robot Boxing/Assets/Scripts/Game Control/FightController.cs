@@ -9,29 +9,54 @@ public class FightController : MonoBehaviour
 {
     //Make sure to attach these Buttons in the Inspector
     [Header("Menu Buttons")]
-    [SerializeField] private Button repairButton;
+    [SerializeField] private Button startButton;
     private GameController GameController;
+    private float timer;
+    [SerializeField] private float attackTime = 0.3f;
+    private bool attacking = false;
+    private bool startRound = false;
+
+    private int numHits_opponent;
+    private int numHits_player;
+    private bool playerAttacked = false;
+    private bool opponentAttacked = false;
 
     [SerializeField] private Fighter opponent;
+    [SerializeField] private Animator player_anim;
+    [SerializeField] private Animator opponent_anim;
 
 
     void Start()
     {
         GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         //Calls the TaskOnClick/TaskWithParameters/ButtonClicked method when you click the Button
-        repairButton.onClick.AddListener(RepairButton);
+        startButton.onClick.AddListener(StartButton);
         opponent = GameController.curOpponent;
+        numHits_player = Random.Range(2,5);
+        numHits_opponent = Random.Range(2,5);
     }
 
     void Update(){
+        //set up a basic timer that activates when attacking becomes true;
+        if(attacking && timer < attackTime){
+            timer += Time.deltaTime;
+        }
+        else{
+            if(playerAttacked)
+                playerAttacked = false;
+            if(opponentAttacked)
+                opponentAttacked = false;
+            attacking = false;
+            timer = 0;
+        }
         
+        if(startRound)
+            CalculateHits();
     }
 
     void CalculateHits(){
-        int numHits_player = Random.Range(2,5);
-        int numHits_opponent = Random.Range(2,5);
-        
-        for(int i = 0; i < numHits_player; i++){
+
+        if(numHits_player > 0 && !playerAttacked && !attacking){
             int attack = 0;
             switch (GameController.player.focus){
                 case 0: //attacks any part randomly
@@ -67,9 +92,13 @@ public class FightController : MonoBehaviour
                     AttackCircuits(GameController.player,opponent);
                     break;
             }
+            numHits_player--;
+            playerAttacked = true;
+            attacking = true;
+            player_anim.Play("player_punch");
         }
 
-        for(int i = 0; i < numHits_opponent; i++){
+        if(numHits_opponent > 0 && !opponentAttacked && !attacking){
             //choose part to attack based on focus (set either randomly or by player)
             int attack = 0;
             switch (opponent.focus){
@@ -107,15 +136,24 @@ public class FightController : MonoBehaviour
                     AttackCoolant(opponent,GameController.player);
                     break;
             }
+                numHits_opponent--;
+                opponentAttacked = true;
+                attacking = true;
+        }
+        
+        if(numHits_opponent == 0 && numHits_player == 0 && timer <= 0){
+            GameController.curOpponent = opponent;
+            GameController.round++;
+            GameController.LoadRepairMenu();
         }
     }
 
-    //Testing Purposes Only
-    void RepairButton(){
-        CalculateHits();
-        GameController.curOpponent = opponent;
-        GameController.round ++;
-        GameController.LoadRepairMenu();
+    
+    void StartButton(){
+        startRound = true;
+        startButton.GetComponent<Image>().enabled = false;
+        startButton.enabled = false;
+        
     }
 
     void AttackArms(Fighter attacker, Fighter defender){
