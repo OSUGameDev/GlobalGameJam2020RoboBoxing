@@ -2889,7 +2889,7 @@ MonoBehaviour:
   - {fileID: 169819273}
   - {fileID: 881248009}
   - {fileID: 1034622601}
-  LoadedLevelName: Repair Menu
+  LoadedLevelName: Fight Scene
 --- !u!114 &1812912584
 MonoBehaviour:
   m_ObjectHideFlags: 0
