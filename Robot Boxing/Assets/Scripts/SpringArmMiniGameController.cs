@@ -42,7 +42,7 @@ public class SpringArmMiniGameController : MonoBehaviour
         {
             scale = scale - clickAmount;
         }
-        scale = scale + K * (1 - scale) * (1 - scale)* Mathf.Sign(1 - scale);
+        scale = scale + K * (1 - scale) * (1 - scale)* Mathf.Sign(1 - scale) * Time.deltaTime;
 
 
 
