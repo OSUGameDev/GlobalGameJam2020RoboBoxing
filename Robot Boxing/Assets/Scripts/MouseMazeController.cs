@@ -14,6 +14,7 @@ public class MouseMazeController : MonoBehaviour
     public Color TracedPathColor = Color.blue;
     public Color StartColor = Color.red;
     public bool IsHead = false;
+
     enum WallState
     {
         NONE = 0,

@@ -10,7 +10,10 @@ public class SpringArmMiniGameController : MonoBehaviour
     public float clickAmount = .1f;
     public float minimum = .15f;
     public bool isDone;
-
+    public AudioClip sound;
+    public float startTime;
+    public float stopTime;
+    
     private float scale;
     float height;
     float orignalY;
@@ -41,6 +44,8 @@ public class SpringArmMiniGameController : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && mouseOnSpring())
         {
             scale = scale - clickAmount;
+            GetComponent<AudioSource>().clip = sound.MakeSubclip(startTime, stopTime);
+            GetComponent<AudioSource>().Play();
         }
         scale = scale + K * (1 - scale) * (1 - scale)* Mathf.Sign(1 - scale) * Time.deltaTime;
 
