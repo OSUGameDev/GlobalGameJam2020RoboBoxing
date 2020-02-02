@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 885879236}
   - component: {fileID: 885879235}
   m_Layer: 5
-  m_Name: Repair Button
+  m_Name: Start Round Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -542,9 +542,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Repair
-
-'
+  m_Text: START!
 --- !u!222 &898922196
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -687,7 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000ee8be806d407439e9e39fba51d7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairButton: {fileID: 885879235}
+  startButton: {fileID: 885879235}
+  attackTime: 1
   opponent:
     name: 
     intro: 
@@ -700,6 +699,8 @@ MonoBehaviour:
     leg: 100
     coolant: 100
     focus: 0
+  player_anim: {fileID: 1728887017}
+  opponent_anim: {fileID: 0}
 --- !u!4 &1278028816
 Transform:
   m_ObjectHideFlags: 0
@@ -823,6 +824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728887016}
   - component: {fileID: 1728887015}
+  - component: {fileID: 1728887017}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -887,12 +889,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728887014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: -1.51, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1728887017
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728887014}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3f043b0cb0228d84cbeeacea2b459e7f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1780622385
 GameObject:
   m_ObjectHideFlags: 0

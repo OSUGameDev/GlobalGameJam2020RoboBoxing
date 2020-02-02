@@ -99,6 +99,7 @@ public class GameController : MonoBehaviour
         return f;
     }
 
+    //Generates a new fighter
     public Fighter GenerateFighter(){
         int handicap = 0;
         if(match > 0)
