@@ -1090,12 +1090,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e661d47958c85f4d9785c9104b325b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defence: 0
-  sight: 0
-  grapple: 0
-  strength: 0
-  speed: 0
-  pierce: 0
+  player:
+    name: 
+    intro: 
+    weaknesses: 
+    ownerName: 
+    eyes: 100
+    cableBox: 100
+    arm: 100
+    circuitBoard: 100
+    leg: 100
+    coolant: 100
+    focus: 0
+  curOpponent:
+    name: 
+    intro: 
+    weaknesses: 
+    ownerName: 
+    eyes: 100
+    cableBox: 100
+    arm: 100
+    circuitBoard: 100
+    leg: 100
+    coolant: 100
+    focus: 0
   timer: 0
   repairTime: 30
   timerDisplay: {fileID: 1270773108}
+  difficulty: 2
+  round: 0
+  match: 0
+  maxMatches: 6
+  maxRounds: 6

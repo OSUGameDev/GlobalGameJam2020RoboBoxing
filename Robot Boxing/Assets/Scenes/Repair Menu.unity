@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 321938180}
   - component: {fileID: 321938179}
   m_Layer: 5
-  m_Name: Strength Button
+  m_Name: CircuitBoard Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -591,9 +591,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Increase Defense
-
-'
+  m_Text: Repair Eyes
 --- !u!222 &462509010
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -615,7 +613,7 @@ GameObject:
   - component: {fileID: 528065220}
   - component: {fileID: 528065219}
   m_Layer: 5
-  m_Name: Grapple Button
+  m_Name: CableBox Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,9 +786,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Increase Speed
-
-'
+  m_Text: Repair Leg
 --- !u!222 &535956214
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -812,7 +808,7 @@ GameObject:
   - component: {fileID: 689037801}
   - component: {fileID: 689037800}
   m_Layer: 5
-  m_Name: Defense Button
+  m_Name: Eyes Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1065,9 +1061,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Increase Pierce
-
-'
+  m_Text: Repair Coolant
 --- !u!222 &799801002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1144,9 +1138,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Increase Grapple
-
-'
+  m_Text: Repair Cable Box
 --- !u!222 &1302623358
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1168,7 +1160,7 @@ GameObject:
   - component: {fileID: 1346813120}
   - component: {fileID: 1346813119}
   m_Layer: 5
-  m_Name: Speed Button
+  m_Name: Leg Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,9 +1333,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Increase Sight
-
-'
+  m_Text: Repair Cables
 --- !u!222 &1392501951
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1420,9 +1410,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Increase Strength
-
-'
+  m_Text: Repair Circuit Board
 --- !u!222 &1413540362
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1443,12 +1431,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2baa5d51d0ca7c0428fc0bbf139377ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defenceButton: {fileID: 689037800}
-  sightButton: {fileID: 105190}
-  grappleButton: {fileID: 528065219}
-  strengthButton: {fileID: 321938179}
-  speedButton: {fileID: 1346813119}
-  pierceButton: {fileID: 1723914376}
+  eyesButton: {fileID: 689037800}
+  cableBoxButton: {fileID: 105190}
+  armButton: {fileID: 528065219}
+  circuitBoardButton: {fileID: 321938179}
+  legButton: {fileID: 1346813119}
+  coolantButton: {fileID: 1723914376}
   fightButton: {fileID: 2073358528}
 --- !u!1 &1555197408
 GameObject:
@@ -1463,7 +1451,7 @@ GameObject:
   - component: {fileID: 105191}
   - component: {fileID: 105190}
   m_Layer: 5
-  m_Name: Sight Button
+  m_Name: Arm Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1513,7 +1501,7 @@ GameObject:
   - component: {fileID: 1723914377}
   - component: {fileID: 1723914376}
   m_Layer: 5
-  m_Name: Pierce Button
+  m_Name: Coolant Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1984,6 +1972,42 @@ PrefabInstance:
     - target: {fileID: 4431168913793759147, guid: 5547208e780e44e488b8eca4cb375a1e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380950070, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380950070, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380950070, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340181510, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340181510, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340181510, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050891, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050891, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050891, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

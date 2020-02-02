@@ -8,12 +8,12 @@ public class ButtonController : MonoBehaviour
 {
     //Make sure to attach these Buttons in the Inspector
     [Header("Stat Buttons")]
-    [SerializeField] private Button defenceButton;
-    [SerializeField] private Button sightButton;
-    [SerializeField] private Button grappleButton;
-    [SerializeField] private Button strengthButton;
-    [SerializeField] private Button speedButton;
-    [SerializeField] private Button pierceButton;
+    [SerializeField] private Button eyesButton;
+    [SerializeField] private Button cableBoxButton;
+    [SerializeField] private Button armButton;
+    [SerializeField] private Button circuitBoardButton;
+    [SerializeField] private Button legButton;
+    [SerializeField] private Button coolantButton;
     //Any buttoons that will open a menu
     [Header("Menu Buttons")]
     [SerializeField] private Button fightButton;
@@ -23,12 +23,12 @@ public class ButtonController : MonoBehaviour
     {
         GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         //adding event listeners cause we javascript now boys
-        defenceButton.onClick.AddListener(DefenceButton);
-        grappleButton.onClick.AddListener(GrappleButton);
-        sightButton.onClick.AddListener(SightButton);
-        strengthButton.onClick.AddListener(StrengthButton);
-        speedButton.onClick.AddListener(SpeedButton);
-        pierceButton.onClick.AddListener(PierceButton);
+        eyesButton.onClick.AddListener(EyesButton);
+        armButton.onClick.AddListener(ArmButton);
+        cableBoxButton.onClick.AddListener(CableBoxButton);
+        circuitBoardButton.onClick.AddListener(CircuitBoardButton);
+        legButton.onClick.AddListener(LegButton);
+        coolantButton.onClick.AddListener(CoolantButton);
         fightButton.onClick.AddListener(FightButton);
     }
 
@@ -43,35 +43,35 @@ public class ButtonController : MonoBehaviour
         Each button has it's own function because it's easier and we might have certain buttons do more than one thing and other such things I guess, probably
         could have had a listener function that took a parameter and put it in a case statement, but I want to keep it like this for now.
     */
-    void DefenceButton()
+    void EyesButton()
     {
 
-        GameController.ModifyDefence(1);
+        GameController.player.ModifyEyes(1);
     }
-    void GrappleButton()
+    void ArmButton()
     {
 
-        GameController.ModifyGrapple(1);
+        GameController.player.ModifyArm(1);
     }
-    void SightButton()
+    void CableBoxButton()
     {
 
-        GameController.ModifySight(1);
+        GameController.player.ModifyCableBox(1);
     }
-    void StrengthButton()
+    void CircuitBoardButton()
     {
 
-        GameController.ModifyStrength(1);
+        GameController.player.ModifyCircuitBoard(1);
     }
-    void SpeedButton()
+    void LegButton()
     {
 
-        GameController.ModifySpeed(1);
+        GameController.player.ModifyLeg(1);
     }
-    void PierceButton()
+    void CoolantButton()
     {
         
-        GameController.ModifyPierce(1);
+        GameController.player.ModifyCoolant(1);
     }
     void FightButton(){
         //Load the fight
