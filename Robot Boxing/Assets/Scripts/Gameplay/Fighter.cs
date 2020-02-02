@@ -24,38 +24,31 @@ public class Fighter
 
     public void ModifyEyes(float n){
         eyes += (int)(n);
-        if(eyes < 0)
-            eyes = 1;
-       // Debug.Log("Eyes Value is now " + eyes);
+        Mathf.Clamp(eyes,0,100);       // Debug.Log("Eyes Value is now " + eyes);
     }
     public void ModifyArm(float n){
         arm += (int)(n);
-        if(arm < 0)
-            arm = 1;
+        Mathf.Clamp(arm,0,100);  
         //Debug.Log("Arm Value is now " + arm);
     }
     public void ModifyCableBox(float n){
         cableBox += (int)(n);
-        if(cableBox < 0)
-            cableBox = 1;
+        Mathf.Clamp(cableBox,0,100);  
       //  Debug.Log("Cablebox Value is now " + cableBox);
     }
     public void ModifyCircuitBoard(float n){
         circuitBoard += (int)(n);
-        if(circuitBoard < 0)
-            circuitBoard = 1;
+        Mathf.Clamp(circuitBoard,0,100);  
         //Debug.Log("CircuitBoard Value is now " + circuitBoard);
     }
     public void ModifyLeg(float n){
         leg += (int)(n);
-        if(leg < 0)
-            leg = 1;
+        Mathf.Clamp(leg,0,100);  
        // Debug.Log("Leg Value is now " + leg);
     }
     public void ModifyCoolant(float n){
         coolant += (int)(n);
-        if(coolant < 0)
-            coolant = 1;
+        Mathf.Clamp(coolant,0,100);  
       //  Debug.Log("Coolant Value is now " + coolant);
     }
     public bool IsFighterLostByDamage(){
