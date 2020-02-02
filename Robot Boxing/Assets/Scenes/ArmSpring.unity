@@ -563,10 +563,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e72f26788f93742bab56f00969a065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationTime: 0
-  OpenImage: {fileID: 0}
-  ClosedImage: {fileID: 0}
-  backgroundImage: {fileID: 0}
+  springs:
+  - {fileID: 561857542}
+  - {fileID: 1926460755}
+  - {fileID: 1765317061}
+  AnimationTime: 1
+  OpenImage: {fileID: 7935759185421812357, guid: 442c14acc3a1773409ca22d419797213,
+    type: 3}
+  ClosedImage: {fileID: -593079889383875425, guid: 442c14acc3a1773409ca22d419797213,
+    type: 3}
+  backgroundImage: {fileID: 1587992315}
 --- !u!1 &1587992315
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8930d270645636f4282b4b3326869ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  K: 0.02
+  K: 0.017
   clickAmount: 0.1
   minimum: 0.2
   isDone: 0
@@ -964,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8930d270645636f4282b4b3326869ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  K: 0.02
+  K: 0.015
   clickAmount: 0.1
   minimum: 0.2
   isDone: 0

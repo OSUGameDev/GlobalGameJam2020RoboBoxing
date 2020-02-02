@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PressureRepair.unity
     guid: 1db203f6e25236f42a8532d8f5a5b424
+  - enabled: 1
+    path: Assets/Scenes/ArmSpring.unity
+    guid: 5cc960c3d37e2a64992302c62972ae12
   m_configObjects: {}

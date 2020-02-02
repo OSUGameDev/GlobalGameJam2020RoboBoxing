@@ -39,7 +39,7 @@ public class SpringManager : MonoBehaviour
             if(currentAnimationTime >= AnimationTime)
             {
                 GameController.Instance.player.ModifyArm(.5f);
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Fight Scene", UnityEngine.SceneManagement.LoadSceneMode.Single);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
             }
         }
     }
