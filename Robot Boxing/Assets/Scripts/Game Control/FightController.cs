@@ -39,6 +39,7 @@ public class FightController : MonoBehaviour
     public AudioInformation fightingSoundInfo;
 
 
+
     void Start()
     {
         GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -79,6 +80,7 @@ public class FightController : MonoBehaviour
 
         if(numHits_player > 0 && !playerAttacked && !attacking){
             int attack = 0;
+            float damage = 0;
             switch (GameController.player.focus){
                 case 0: //attacks any part randomly
                     attack = Random.Range(0,5);
@@ -95,33 +97,40 @@ public class FightController : MonoBehaviour
             }
             switch (attack){
                 case 0:
-                    AttackArms(GameController.player,opponent);
+                    damage =AttackArms(GameController.player,opponent);
                     break;
                 case 1:
-                    AttackLegs(GameController.player,opponent);
+                    damage =AttackLegs(GameController.player,opponent);
                     break;
                 case 2:
-                    AttackCables(GameController.player,opponent);
+                    damage =AttackCables(GameController.player,opponent);
                     break;
                 case 3:
-                    AttackCoolant(GameController.player,opponent);
+                    damage =AttackCoolant(GameController.player,opponent);
                     break;
                 case 4:
-                    AttackEyes(GameController.player,opponent);
+                    damage =AttackEyes(GameController.player,opponent);
                     break;
                 case 5:
-                    AttackCircuits(GameController.player,opponent);
+                    damage =AttackCircuits(GameController.player,opponent);
                     break;
             }
+            //Hit sounds go here
             numHits_player--;
             playerAttacked = true;
             attacking = true;
-            player_anim.Play("player_punch");
+            //enemyDamage.GetCo= true;
+            //enemyDamage.GetComponent<Text>().text = "" + (int)(damage);
+            if(attack >= 3)
+                player_anim.Play("player_punch");
+            else
+                player_anim.Play("player_jab");
         }
 
         if(numHits_opponent > 0 && !opponentAttacked && !attacking){
             //choose part to attack based on focus (set either randomly or by player)
             int attack = 0;
+            float damage;
             switch (opponent.focus){
                 case 0: //attacks any part randomly
                     attack = Random.Range(0,6);
@@ -139,24 +148,25 @@ public class FightController : MonoBehaviour
             
             switch (attack){
                 case 0:
-                    AttackArms(opponent,GameController.player);
+                    damage = AttackArms(opponent,GameController.player);
                     break;
                 case 1:
-                    AttackLegs(opponent,GameController.player);
+                    damage =AttackLegs(opponent,GameController.player);
                     break;
                 case 2:
-                    AttackCables(opponent,GameController.player);
+                    damage =AttackCables(opponent,GameController.player);
                     break;
                 case 3:
-                    AttackCircuits(opponent,GameController.player);
+                    damage =AttackCircuits(opponent,GameController.player);
                     break;
                 case 4:
-                    AttackEyes(opponent,GameController.player);
+                    damage =AttackEyes(opponent,GameController.player);
                     break;
                 case 5:
-                    AttackCoolant(opponent,GameController.player);
+                    damage =AttackCoolant(opponent,GameController.player);
                     break;
             }
+                opponent_anim.Play("enemy_jab");
                 numHits_opponent--;
                 opponentAttacked = true;
                 attacking = true;
@@ -165,6 +175,7 @@ public class FightController : MonoBehaviour
         if(numHits_opponent == 0 && numHits_player == 0 && timer <= 0){
             GameController.curOpponent = opponent;
             GameController.round++;
+            GameController.CheckConditions(); //If this passes then we will go to main menu instead
             GameController.LoadRepairMenu();
         }
     }
@@ -184,40 +195,46 @@ public class FightController : MonoBehaviour
         }
      }
 
-    void AttackArms(Fighter attacker, Fighter defender){
+    float AttackArms(Fighter attacker, Fighter defender){
         float damage = AttackCalclate(attacker,defender);
         defender.ModifyArm(damage);
         Debug.Log(attacker.name + " attacks " + defender.name + "'s arms and does " + (int)(-damage) + " damage!");
+        return damage;
     }
 
-    void AttackLegs(Fighter attacker, Fighter defender){
+    float AttackLegs(Fighter attacker, Fighter defender){
         float damage = AttackCalclate(attacker,defender);
         defender.ModifyLeg(damage);
         Debug.Log(attacker.name + " attacks " + defender.name + "'s legs and does " + (int)(-damage) + " damage!");
+        return damage;
     }
 
-    void AttackCables(Fighter attacker, Fighter defender){
+    float AttackCables(Fighter attacker, Fighter defender){
         float damage = AttackCalclate(attacker,defender);
         defender.ModifyCableBox(damage);
         Debug.Log(attacker.name + " attacks " + defender.name + "'s cables and does " + (int)(-damage) + " damage!");
+        return damage;
     }
 
-    void AttackCircuits(Fighter attacker, Fighter defender){
+    float AttackCircuits(Fighter attacker, Fighter defender){
         float damage = AttackCalclate(attacker,defender);
         defender.ModifyCircuitBoard(damage);
         Debug.Log(attacker.name + " attacks " + defender.name + "'s circuits and does " + (int)(-damage) + " damage!");
+        return damage;
     }
 
-    void AttackCoolant(Fighter attacker, Fighter defender){
+    float AttackCoolant(Fighter attacker, Fighter defender){
         float damage = AttackCalclate(attacker,defender);
         defender.ModifyCoolant(damage);
         Debug.Log(attacker.name + " attacks " + defender.name + "'s coolant cell and does " + (int)(-damage) + " damage!");
+        return damage;
     }
 
-    void AttackEyes(Fighter attacker, Fighter defender){
+    float AttackEyes(Fighter attacker, Fighter defender){
         float damage = AttackCalclate(attacker,defender); 
         defender.ModifyEyes(damage);
         Debug.Log(attacker.name + " attacks " + defender.name + "'s eyes and does " + (int)(-damage) + " damage!");
+        return damage;
     }
 
     private float AttackCalclate(Fighter attacker,Fighter defender){

@@ -10,6 +10,12 @@ TagManager:
   - circuit meter
   - leg meter
   - eye meter
+  - enemy damage
+  - player damage
+  - Enemy Gauge
+  - Player Gauge
+  - Timer Gauge
+  - Match Gauge
   layers:
   - Default
   - TransparentFX
