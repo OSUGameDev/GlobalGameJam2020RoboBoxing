@@ -13,7 +13,7 @@ public class EyeMiniGameScrewController : MonoBehaviour
     public float audioEndTime;
     public UnityEvent afterEvent = new UnityEvent();
 
-    private Rect location => new Rect(new Vector2(transform.position.x, transform.position.y) - this.GetComponent<RectTransform>().rect.size * .5f, this.GetComponent<RectTransform>().rect.size);
+    private Rect location => new Rect(new Vector2(transform.position.x, transform.position.y) - this.GetComponent<RectTransform>().rect.size * .5f * transform.lossyScale, this.GetComponent<RectTransform>().rect.size * transform.lossyScale);
 
 
     public float currentAnimationTime = 0;
@@ -73,5 +73,14 @@ public class EyeMiniGameScrewController : MonoBehaviour
             currentAnimationTime += Time.deltaTime;
             afterEvent?.Invoke();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(location.position.ToVec3(), location.position.ToVec3() + new Vector3(location.width, 0, 0));
+        Gizmos.DrawLine(location.position.ToVec3(), location.position.ToVec3() + new Vector3(0, location.height, 0));
+        Gizmos.DrawLine(location.position.ToVec3() + location.size.ToVec3(), location.position.ToVec3() + new Vector3(location.width, 0, 0));
+        Gizmos.DrawLine(location.position.ToVec3() + location.size.ToVec3(), location.position.ToVec3() + new Vector3(0, location.height, 0));
     }
 }

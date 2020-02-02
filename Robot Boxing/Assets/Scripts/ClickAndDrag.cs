@@ -11,7 +11,7 @@ public class ClickAndDrag : MonoBehaviour
     }
 
     public bool canMove = false;
-    private Rect location => new Rect(new Vector2(transform.position.x,transform.position.y) - this.GetComponent<RectTransform>().rect.size * .5f, this.GetComponent<RectTransform>().rect.size);
+    private Rect location => new Rect(new Vector2(transform.position.x,transform.position.y) - this.GetComponent<RectTransform>().rect.size * .5f * transform.lossyScale, this.GetComponent<RectTransform>().rect.size * transform.lossyScale);
     private bool isDragging;
     private Vector3 lastMouseLocation;
     Vector2 velocity;
@@ -52,7 +52,15 @@ public class ClickAndDrag : MonoBehaviour
         velocity = velocity * .9f;
         if (velocity.sqrMagnitude < .1)
             velocity = Vector3.zero;
-        this.transform.position += Time.deltaTime * new Vector3(velocity.x, velocity.y, 0) ; 
-        
+        this.transform.position += Time.deltaTime * new Vector3(velocity.x, velocity.y, 0) ;    
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(location.position.ToVec3(), location.position.ToVec3() + new Vector3(location.width, 0, 0));
+        Gizmos.DrawLine(location.position.ToVec3(), location.position.ToVec3() + new Vector3(0, location.height, 0));
+        Gizmos.DrawLine(location.position.ToVec3() + location.size.ToVec3(), location.position.ToVec3() + new Vector3(location.width, 0, 0));
+        Gizmos.DrawLine(location.position.ToVec3() + location.size.ToVec3(), location.position.ToVec3() + new Vector3(0, location.height, 0));
+    }
+
 }

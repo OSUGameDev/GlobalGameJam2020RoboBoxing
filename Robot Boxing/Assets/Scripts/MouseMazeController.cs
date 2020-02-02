@@ -48,6 +48,7 @@ public class MouseMazeController : MonoBehaviour
     private Cell[,] cells;
     Stack<Cell> currentPath;
     Texture2D theText;
+    Texture2D pauseText;
     Vector3 Dimeniosn;
     // Start is called before the first frame update
     void Start()
@@ -137,7 +138,7 @@ public class MouseMazeController : MonoBehaviour
             currentPath.Pop();
         }
         theText = new Texture2D(width * cellWidth, height * cellWidth);
-
+        pauseText = new Texture2D(width * cellWidth, height * cellWidth);
         Cell startCell = cells[0, height - 1];
         startCell.isSpecial = true;
         startCell.walls = startCell.walls & (WallState.ALL ^ WallState.BOTTOM);
@@ -158,10 +159,19 @@ public class MouseMazeController : MonoBehaviour
         theText.Apply();
         this.GetComponent<Image>().sprite = Sprite.Create(theText,new Rect(new Vector2(0,0),new Vector2(width * cellWidth,height * cellWidth)),new Vector2(width * cellWidth / 2, height * cellWidth / 2));
 
+        for (int ix = 0; ix < cellWidth * width; ix++)
+        {
+            for (int iy = 0; iy < cellWidth * width; iy++)
+            {
+                pauseText.SetPixel(ix,iy, Color.white);
+            }
+        }
+
+        isPaused = true;
         Dimeniosn = new Vector3(this.GetComponent<RectTransform>().rect.width, this.GetComponent<RectTransform>().rect.height, 0);
     }
 
-
+    bool isPaused = false;
 
     bool CheckDirection(Vector2Int dir)
     {
@@ -245,6 +255,19 @@ public class MouseMazeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.deltaTime == 0 && !isPaused)
+        {
+            this.GetComponent<Image>().sprite = Sprite.Create(pauseText, new Rect(new Vector2(0, 0), new Vector2(width * cellWidth, height * cellWidth)), new Vector2(width * cellWidth / 2, height * cellWidth / 2));
+
+            isPaused = true;
+        }
+        else if(Time.deltaTime != 0 && isPaused)
+        {
+            this.GetComponent<Image>().sprite = Sprite.Create(theText, new Rect(new Vector2(0, 0), new Vector2(width * cellWidth, height * cellWidth)), new Vector2(width * cellWidth / 2, height * cellWidth / 2));
+            isPaused = false;
+        }
+        if (Time.deltaTime == 0)
+            return;
 
         Vector3 position = Input.mousePosition - (this.transform.position);
         position = new Vector3(position.x / transform.lossyScale.x, position.y / transform.lossyScale.y, position.z / transform.lossyScale.z);

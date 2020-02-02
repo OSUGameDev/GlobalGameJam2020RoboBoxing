@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseMenuController : MonoBehaviour
 {
     public bool isPaused;
+    public GameObject BackToRepairButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,14 @@ public class PauseMenuController : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(isPaused);
             Time.timeScale = isPaused ? 0 : 1;
             AudioListener.pause = !AudioListener.pause;
+        }
+        if(!(GameController.Instance.timer > 0))
+        {
+            BackToRepairButton.SetActive(false);
+        }
+        else
+        {
+            BackToRepairButton.SetActive(true);
         }
     }
     void OnLevelWasLoaded(int level)
@@ -41,5 +50,9 @@ public class PauseMenuController : MonoBehaviour
     public void ExitToMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu", UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
+    public void ExitToRepair()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 }

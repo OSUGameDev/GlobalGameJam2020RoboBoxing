@@ -8,6 +8,10 @@ public static class VectorExtendor
     {
         return new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
     }
+    public static Vector3 ToVec3(this Vector2 a)
+    {
+        return new Vector3(a.x, a.y, 0);
+    }
 
     public static AudioClip MakeSubclip(this AudioClip clip, float start, float stop)
     {

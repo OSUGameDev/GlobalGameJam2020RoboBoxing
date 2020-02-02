@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40, y: -54}
+  m_AnchoredPosition: {x: -79, y: -45}
   m_SizeDelta: {x: 45, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6644331778495700226
@@ -123,7 +123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: -84}
+  m_AnchoredPosition: {x: 27.9, y: -84.8}
   m_SizeDelta: {x: 45, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6644331778615237137
@@ -191,6 +191,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   canBeInstalled: 0
+  hasReportedInstall: 0
 --- !u!114 &6644331778615237139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +218,7 @@ GameObject:
   - component: {fileID: 6644331779969779051}
   - component: {fileID: 6644331779969779048}
   - component: {fileID: 6644331779969779049}
+  - component: {fileID: 998841925}
   m_Layer: 5
   m_Name: EyeMingame
   m_TagString: Untagged
@@ -233,7 +235,7 @@ RectTransform:
   m_GameObject: {fileID: 6644331779969779054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.2854167, y: 1.2854167, z: 1.2854167}
   m_Children:
   - {fileID: 6644331778495700224}
   - {fileID: 6644331778615237136}
@@ -278,11 +280,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 480, y: 270}
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -317,9 +319,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2636917d07897c749a0ac87a8d598e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 75
+  Radius: 30
   NumbScrews: 5
   ScrewPrefab: {fileID: 4707248754246955893, guid: 99af3d57551dd0f428aebff93c4a0f38,
     type: 3}
   CrackedEye: {fileID: 6644331778495700225}
   NewEye: {fileID: 6644331778615237140}
+--- !u!114 &998841925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6644331779969779054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1.9839228
