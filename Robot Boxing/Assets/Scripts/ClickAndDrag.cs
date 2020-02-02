@@ -27,8 +27,6 @@ public class ClickAndDrag : MonoBehaviour
             return;
         if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log(location);
-            Debug.Log(Input.mousePosition);
             if(location.Contains(Input.mousePosition))
             {
                 isDragging = true;
@@ -49,7 +47,8 @@ public class ClickAndDrag : MonoBehaviour
             this.transform.position += Input.mousePosition - lastMouseLocation;
             lastMouseLocation = Input.mousePosition;
         }
-
+        if (velocity.sqrMagnitude > 2)
+            velocity = Vector3.zero;
         velocity = velocity * .9f;
         if (velocity.sqrMagnitude < .1)
             velocity = Vector3.zero;
