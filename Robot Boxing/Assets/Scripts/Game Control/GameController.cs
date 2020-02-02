@@ -21,6 +21,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private float repairTime; //time allowed for player to repair the robot
     [SerializeField] private Text timerDisplay;
 
+    [SerializeField] private GameObject playerGauge;
+    [SerializeField] private GameObject opponentGauge;
+    [SerializeField] private GameObject timerGauge;
+
     [Header("Fight State")]
     public float difficulty = 1;
     public int round = 0;
@@ -28,9 +32,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private int maxMatches = 6;
     [SerializeField] private int maxRounds = 6;
 
-
     private void Start()
     {
+        playerGauge = GameObject.FindGameObjectWithTag("Player Gauge");
+        opponentGauge = GameObject.FindGameObjectWithTag("Enemy Gauge");
+        timerGauge = GameObject.FindGameObjectWithTag("Timer Gauge");
         player = GeneratePlayer();
         curOpponent = GenerateFighter();
         if (_instance != null && _instance != this)
@@ -56,6 +62,7 @@ public class GameController : MonoBehaviour
         IsPlayerWonFight();
         IsPlayerWonGame();
         IsPlayerLostGame();
+        HideUI();
 
     }
 
@@ -121,6 +128,35 @@ public class GameController : MonoBehaviour
         f.coolant =         75 + handicap * 25;
         f.focus = Random.Range(1,3);
         return f;
+    }
+
+    private void HideUI(){
+        if(SceneManager.GetActiveScene().name == "Fight Scene"){
+            //Show Enemy Meter
+            opponentGauge.SetActive(true);
+            //Move Player Meter
+            playerGauge.GetComponent<RectTransform>().anchorMin = new Vector2(0,0.5f);
+            playerGauge.GetComponent<RectTransform>().anchorMax = new Vector2(0,0.5f);
+            playerGauge.SetActive(true);
+            playerGauge.GetComponent<RectTransform>().anchoredPosition3D= new Vector3(57,0,0);
+        }
+        else if(SceneManager.GetActiveScene().name == "Repair Menu"){
+            //Hide Enemy Meter
+            opponentGauge.SetActive(false);
+            //Move Player Meter
+            playerGauge.SetActive(true);
+            playerGauge.GetComponent<RectTransform>().anchorMin = new Vector2(1,0.5f);
+            playerGauge.GetComponent<RectTransform>().anchorMax = new Vector2(1,0.5f);
+            playerGauge.GetComponent<RectTransform>().anchoredPosition3D= new Vector3(0,0,0);
+        }
+        else{
+            //Hide Enemy Meter
+            opponentGauge.SetActive(false);
+            //Hide Player Meter
+            playerGauge.SetActive(false);
+        }
+        
+
     }
 
     

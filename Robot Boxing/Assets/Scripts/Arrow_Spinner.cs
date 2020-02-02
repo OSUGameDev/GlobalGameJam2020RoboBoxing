@@ -16,7 +16,7 @@ public class Arrow_Spinner : MonoBehaviour
     {
         arrow = GameObject.Find("Arrow");
         float match2 = (float)GameObject.Find("GameController").GetComponent<GameController>().match + 1.0f;
-        GameObject.Find("GameController").GetComponentInChildren<Canvas>().enabled = false;
+        //GameObject.Find("GameController").GetComponentInChildren<Canvas>().enabled = false;
         Debug.Log(match2);
         Target_Pressure = 1000 * match2 + Random.Range(0, 11) * match2;
         Click = Random.Range(0, 10 * match2) + 100;
