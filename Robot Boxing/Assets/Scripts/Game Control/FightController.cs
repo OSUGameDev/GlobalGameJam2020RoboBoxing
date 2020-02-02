@@ -199,12 +199,15 @@ public class FightController : MonoBehaviour
                 GameController.ToggleWin(true);
             if(GameController.loseSign.activeInHierarchy)
                 GameController.ToggleWin(false);
-            GameController.curOpponent = opponent;
             GameController.round++;
+            GameController.curOpponent = opponent;
+
             if(GameController.IsPlayerLostGame())
                 GameController.CheckConditions(); //If this passes then we will go to main menu instead
-            else
+            else{
+                GameController.IsPlayerWonFight();
                 GameController.LoadRepairMenu();
+            }
         }
     }
 
