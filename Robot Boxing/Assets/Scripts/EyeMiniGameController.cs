@@ -8,6 +8,23 @@ public static class VectorExtendor
     {
         return new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
     }
+
+    public static AudioClip MakeSubclip(this AudioClip clip, float start, float stop)
+    {
+        /* Create a new audio clip */
+        int frequency = clip.frequency;
+        float timeLength = stop - start;
+        int samplesLength = (int)(frequency * timeLength);
+        AudioClip newClip = AudioClip.Create(clip.name + "-sub", samplesLength, 1, frequency, false);
+        /* Create a temporary buffer for the samples */
+        float[] data = new float[samplesLength];
+        /* Get the data from the original clip */
+        clip.GetData(data, (int)(frequency * start));
+        /* Transfer the data to the new clip */
+        newClip.SetData(data, 0);
+        /* Return the sub clip */
+        return newClip;
+    }
 }
 
 public class EyeMiniGameController : MonoBehaviour
