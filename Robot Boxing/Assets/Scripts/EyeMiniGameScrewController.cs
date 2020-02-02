@@ -8,7 +8,7 @@ public class EyeMiniGameScrewController : MonoBehaviour
     public bool isUnscrewed;
     public float AnimationTime;
     public float Revolutions;
-    public UnityEvent afterEvent;
+    public UnityEvent afterEvent = new UnityEvent();
 
     private Rect location => new Rect(new Vector2(transform.position.x, transform.position.y) - this.GetComponent<RectTransform>().rect.size * .5f, this.GetComponent<RectTransform>().rect.size);
 
@@ -23,6 +23,21 @@ public class EyeMiniGameScrewController : MonoBehaviour
         hasAnimated = false;
     }
 
+    public void ResetAnimation()
+    {
+        currentAnimationTime = AnimationTime;
+        hasAnimated = false;
+    }
+
+    public void hideScrew()
+    {
+        transform.GetChild(1).gameObject.SetActive(false);
+    }
+    public void showScrew()
+    {
+        transform.GetChild(1).gameObject.SetActive(true);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -31,19 +46,22 @@ public class EyeMiniGameScrewController : MonoBehaviour
             currentAnimationTime = 0;
             isAnimating = true;
             hasAnimated = true;
+            showScrew();
         }
         if(currentAnimationTime < AnimationTime)
         {
+        
             float currentRot = ((currentAnimationTime / AnimationTime) * Revolutions) * 360;
-            this.transform.rotation = Quaternion.Euler(0, 0, currentRot);
+            transform.GetChild(1).rotation = Quaternion.Euler(0, 0, currentRot);
             currentAnimationTime += Time.deltaTime;
+            
         }
         else if (isAnimating)
         {
             isAnimating = false;
 
             float currentRot = Revolutions * 360;
-            this.transform.rotation = Quaternion.Euler(0, 0, currentRot);
+            transform.GetChild(1).rotation = Quaternion.Euler(0, 0, currentRot);
             currentAnimationTime += Time.deltaTime;
             afterEvent?.Invoke();
         }

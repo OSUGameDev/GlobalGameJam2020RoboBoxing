@@ -8,29 +8,57 @@ public class EyeMiniGameController : MonoBehaviour
     public float Radius;
     public int NumbScrews;
     public GameObject ScrewPrefab;
-    private int numUnscrewed;
+    private int numScrewsDone;
+    public GameObject CrackedEye;
+    public GameObject NewEye;
+    bool isScrewingIn;
     // Start is called before the first frame update
+    List<EyeMiniGameScrewController> screws;
     void Start()
     {
+        isScrewingIn = false;
         float degrees = 360.0f / (float)NumbScrews;
-        numUnscrewed = 0;
+        numScrewsDone = 0;
+        NewEye.GetComponent<EyeMiniGameGoodEyeController>().DesiredLocation = CrackedEye.transform.position;
+        NewEye.GetComponent<EyeMiniGameGoodEyeController>().onMag.AddListener(OnFinish);
+        screws = new List<EyeMiniGameScrewController>();
         for ( int i = 0; i < NumbScrews; i++)
         {
             GameObject newScrew = GameObject.Instantiate(ScrewPrefab, transform);
             newScrew.transform.position +=
             Quaternion.Euler(0, 0, degrees * (float)i) * new Vector3(Radius, 0, 0);
-            newScrew.GetComponent<EyeMiniGameScrewController>().afterEvent.AddListener(ScrewUndone);
-            
+            newScrew.GetComponent<EyeMiniGameScrewController>().afterEvent.AddListener(() => ScrewUndone(newScrew));
+            screws.Add(newScrew.GetComponent<EyeMiniGameScrewController>());
+
+
         }
     }
 
-    void ScrewUndone()
+    void ScrewUndone(GameObject obj)
     {
-        numUnscrewed++;
-        if(numUnscrewed == NumbScrews)
+        numScrewsDone++;
+        if (isScrewingIn)
         {
-
+            if (numScrewsDone == NumbScrews)
+            {
+                //todo bedone
+            }
+            return;
         }
+        
+        obj.GetComponent<EyeMiniGameScrewController>().hideScrew();
+        if (numScrewsDone == NumbScrews)
+        {
+            CrackedEye.GetComponent<ClickAndDrag>().SetDraggable(true);
+            NewEye.GetComponent<EyeMiniGameGoodEyeController>().canBeInstalled = true;
+        }
+    }
+
+    void OnFinish()
+    {
+        isScrewingIn = true;
+        screws.ForEach(item => item.ResetAnimation());
+        numScrewsDone = 0;
     }
 
     // Update is called once per frame
