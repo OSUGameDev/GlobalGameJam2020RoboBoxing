@@ -44,10 +44,15 @@ public class GameController : MonoBehaviour
 
     private void Update(){
         timerDisplay.enabled = true;
-        if(SceneManager.GetActiveScene().name == "Repair Menu")
+        string curScene = SceneManager.GetActiveScene().name;
+        if(curScene != "Fight Scene" && curScene != "MainMenu"){
+            timer -= Time.deltaTime;
             timerDisplay.text = "" + timer;
+            if(timer <= 0)//load the fight if in any repair scene
+                LoadFightScene();
+        }
         else
-            timerDisplay.enabled = false;
+            timerDisplay.text = "0:00";
         IsPlayerWonFight();
         IsPlayerWonGame();
         IsPlayerLostGame();

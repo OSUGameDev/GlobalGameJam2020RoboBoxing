@@ -34,7 +34,6 @@ public class ButtonController : MonoBehaviour
     }
 
     void Update(){
-        GameController.timer = GameController.timer -= Time.deltaTime;
         //if timer reaches 0... start fight
         if(GameController.timer <= 0)
             FightButton();
