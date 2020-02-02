@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/WireRepair.unity
-    guid: a8eec9f559f35d14c9a9688f732b922f
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 078107459cee9db4bb809b74e6bac90f
   - enabled: 1
@@ -17,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fight Scene.unity
     guid: 759bcde1087d7e84999f5a262462b1d8
+  - enabled: 1
+    path: Assets/Scenes/WireRepair.unity
+    guid: a8eec9f559f35d14c9a9688f732b922f
+  - enabled: 1
+    path: Assets/Scenes/EyeRepair.unity
+    guid: 9f28664b185b056409248eefbf76fc53
   m_configObjects: {}
