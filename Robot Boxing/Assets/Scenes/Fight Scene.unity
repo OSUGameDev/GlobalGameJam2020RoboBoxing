@@ -887,7 +887,12 @@ MonoBehaviour:
   opponent_anim: {fileID: 418866591}
   BellSound: {fileID: 8300000, guid: 358df6120dee1334ba35ef3824eb0f91, type: 3}
   bellVolume: 1
+  hitVolume: 5
   fightSoundDelay: 0
+  hitNoises:
+  - {fileID: 8300000, guid: 77bdfa5ac7a904e4096cf1ed29c7ca2d, type: 3}
+  - {fileID: 8300000, guid: 8181a2b317398c24a87a59a69aaa08bd, type: 3}
+  - {fileID: 8300000, guid: 8629f4f68e3e08941aa5e4702fc037ef, type: 3}
 --- !u!4 &1278028816
 Transform:
   m_ObjectHideFlags: 0
@@ -1087,7 +1092,7 @@ RectTransform:
   m_GameObject: {fileID: 1590142878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2854167, y: 1.2854167, z: 1.2854167}
+  m_LocalScale: {x: 2.5333333, y: 2.5333333, z: 2.5333333}
   m_Children:
   - {fileID: 885879234}
   m_Father: {fileID: 0}

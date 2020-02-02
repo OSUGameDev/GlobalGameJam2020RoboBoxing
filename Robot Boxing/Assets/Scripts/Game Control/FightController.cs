@@ -27,7 +27,11 @@ public class FightController : MonoBehaviour
 
     public AudioClip BellSound;
     public float bellVolume;
+    public float hitVolume = 0.1f;
     public float fightSoundDelay = 0;
+
+    [SerializeField] public AudioClip[] hitNoises;
+    
 
 
     void Start()
@@ -51,6 +55,12 @@ public class FightController : MonoBehaviour
                 
         }
         CheckConditions();
+    }
+
+    void PlayHit(){
+        int n = hitNoises.Length;
+        int r = Random.Range(0,n-1);
+        AudioSource.PlayClipAtPoint(hitNoises[r], transform.position, hitVolume);
     }
 
     void Delay(float delay){
@@ -114,6 +124,8 @@ public class FightController : MonoBehaviour
                 player_anim.Play("player_jab");
             else
                 player_anim.Play("player_swipe");
+            if(hitNoises.Length > 0)
+                PlayHit();
         }
 
         if(numHits_opponent > 0 && delayTime <= 0){
@@ -159,6 +171,8 @@ public class FightController : MonoBehaviour
                     opponent_anim.Play("enemy_jab");
                 else
                     opponent_anim.Play("badguy_swipe");
+                if(hitNoises.Length > 0)
+                    PlayHit();
                 numHits_opponent--;
                 Delay(attackTime);
                 turn = 0;
@@ -180,7 +194,7 @@ public class FightController : MonoBehaviour
                 GameController.ToggleWin(true);
             if(GameController.loseSign.activeInHierarchy)
                 GameController.ToggleWin(false);
-                
+
             GameController.round++;
             GameController.curOpponent = opponent;
 
