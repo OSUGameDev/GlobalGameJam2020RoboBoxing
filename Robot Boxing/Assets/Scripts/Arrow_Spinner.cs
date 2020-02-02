@@ -17,6 +17,7 @@ public class Arrow_Spinner : MonoBehaviour
         Target_Pressure = 1000 * match2 + Random.Range(0, 11) * match2;
         Click = Random.Range(0, 10) + 10;
         Current_Increment = 0;
+        arrow = GameObject.Find("Arrow");
     }
 
     // Update is called once per frame

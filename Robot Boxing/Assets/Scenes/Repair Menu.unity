@@ -1425,8 +1425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyesButton: {fileID: 689037800}
-  cableBoxButton: {fileID: 105190}
-  armButton: {fileID: 528065219}
+  cableBoxButton: {fileID: 528065219}
+  armButton: {fileID: 105190}
   circuitBoardButton: {fileID: 321938179}
   legButton: {fileID: 1346813119}
   coolantButton: {fileID: 1723914376}
