@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HeadRepair.unity
     guid: ea7b702e07818e243be07077a2ec1aa1
+  - enabled: 1
+    path: Assets/Scenes/LegRepair.unity
+    guid: 606b7ff8059771943a4aa97979e0fde5
   m_configObjects: {}
