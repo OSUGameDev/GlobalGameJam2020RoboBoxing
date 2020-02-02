@@ -8,6 +8,9 @@ public class EyeMiniGameScrewController : MonoBehaviour
     public bool isUnscrewed;
     public float AnimationTime;
     public float Revolutions;
+    public AudioClip soundclip;
+    public float audioStartTime;
+    public float audioEndTime;
     public UnityEvent afterEvent = new UnityEvent();
 
     private Rect location => new Rect(new Vector2(transform.position.x, transform.position.y) - this.GetComponent<RectTransform>().rect.size * .5f, this.GetComponent<RectTransform>().rect.size);
@@ -47,6 +50,11 @@ public class EyeMiniGameScrewController : MonoBehaviour
             isAnimating = true;
             hasAnimated = true;
             showScrew();
+            if (GetComponent<AudioSource>() != null)
+            {
+                GetComponent<AudioSource>().clip = soundclip.MakeSubclip(audioStartTime, audioEndTime);
+                GetComponent<AudioSource>().Play();
+            }
         }
         if(currentAnimationTime < AnimationTime)
         {
