@@ -12,14 +12,14 @@ public class FightController : MonoBehaviour
     [SerializeField] private Button startButton;
     private GameController GameController;
     private float timer;
+    private float delayTime;
     [SerializeField] private float attackTime = 0.3f;
     private bool attacking = false;
     private bool startRound = false;
 
     private int numHits_opponent;
     private int numHits_player;
-    private bool playerAttacked = false;
-    private bool opponentAttacked = false;
+    private int turn = 0;
 
     [SerializeField] private Fighter opponent;
     [SerializeField] private Animator player_anim;
@@ -42,25 +42,28 @@ public class FightController : MonoBehaviour
 
     void Update(){
         //set up a basic timer that activates when attacking becomes true;
-        if(attacking && timer < attackTime){
-            timer += Time.deltaTime;
+        UpdateDelayTimer();
+        if(delayTime > 0)
+            Debug.Log("Delaying = " + delayTime);
+        else{                
+                if(startRound){
+                    CalculateHits();
+                }
+                
         }
-        else{
-            if(playerAttacked)
-                playerAttacked = false;
-            if(opponentAttacked)
-                opponentAttacked = false;
-            attacking = false;
-            timer = 0;
-        }
-        
-        if(startRound)
-            CalculateHits();
+        CheckConditions();
+    }
+
+    void Delay(float delay){
+        delayTime = delay;
+    }
+    void UpdateDelayTimer(){
+        delayTime -= Time.deltaTime;
     }
 
     void CalculateHits(){
-
-        if(numHits_player > 0 && !playerAttacked && !attacking){
+        
+        if(numHits_player > 0 && delayTime <= 0){
             int attack = 0;
             float damage = 0;
             switch (GameController.player.focus){
@@ -99,17 +102,15 @@ public class FightController : MonoBehaviour
             }
             //Hit sounds go here
             numHits_player--;
-            playerAttacked = true;
-            attacking = true;
-            //enemyDamage.GetCo= true;
-            //enemyDamage.GetComponent<Text>().text = "" + (int)(damage);
+            Delay(attackTime);
+            turn = 1;
             if(attack >= 3)
                 player_anim.Play("player_punch");
             else
                 player_anim.Play("player_jab");
         }
 
-        if(numHits_opponent > 0 && !opponentAttacked && !attacking){
+        if(numHits_opponent > 0 && delayTime <= 0){
             //choose part to attack based on focus (set either randomly or by player)
             int attack = 0;
             float damage;
@@ -150,11 +151,22 @@ public class FightController : MonoBehaviour
             }
                 opponent_anim.Play("enemy_jab");
                 numHits_opponent--;
-                opponentAttacked = true;
-                attacking = true;
+                Delay(attackTime);
+                turn = 0;
+        }
+
+    }
+    private void CheckConditions(){
+        if(GameController.IsPlayerWonFight()){
+            GameController.ToggleWin(true);
+            Delay(3);
         }
         
-        if(numHits_opponent == 0 && numHits_player == 0 && timer <= 0){
+        if(numHits_opponent == 0 && numHits_player == 0 && delayTime <= 0){
+            if(GameController.winSign.activeInHierarchy)
+                GameController.ToggleWin(true);
+            if(GameController.loseSign.activeInHierarchy)
+                GameController.ToggleWin(false);
             GameController.curOpponent = opponent;
             GameController.round++;
             GameController.CheckConditions(); //If this passes then we will go to main menu instead

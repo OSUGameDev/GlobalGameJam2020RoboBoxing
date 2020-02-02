@@ -16,6 +16,8 @@ TagManager:
   - Player Gauge
   - Timer Gauge
   - Match Gauge
+  - Win Sign
+  - Lose Sign
   layers:
   - Default
   - TransparentFX
