@@ -597,6 +597,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6644331779969779051, guid: 7c529fa9424c59946a75896c6310fe25,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644331779969779051, guid: 7c529fa9424c59946a75896c6310fe25,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644331779969779051, guid: 7c529fa9424c59946a75896c6310fe25,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 270
+      objectReference: {fileID: 0}
     - target: {fileID: 6644331779969779049, guid: 7c529fa9424c59946a75896c6310fe25,
         type: 3}
       propertyPath: Radius

@@ -243,7 +243,15 @@ public class MouseMazeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 position = Input.mousePosition - this.transform.position + (.5f * Dimeniosn);
+
+        Vector3 position = Input.mousePosition - (this.transform.position);
+        position = new Vector3(position.x / transform.lossyScale.x, position.y / transform.lossyScale.y, position.z / transform.lossyScale.z);
+
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("");
+        }
         if(position.x > 0 && position.y > 0 && position.x < Dimeniosn.x && position.y < Dimeniosn.y)
         {
             Vector2Int coords = new Vector2Int((int)(position.x / Dimeniosn.x * width), (int)(position.y / Dimeniosn.y * height));
