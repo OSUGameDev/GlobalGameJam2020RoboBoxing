@@ -25,12 +25,14 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject opponentGauge;
     [SerializeField] private GameObject timerGauge;
     [SerializeField] private GameObject roundGauge;
+    [SerializeField] public GameObject winSign;
+    [SerializeField] public GameObject loseSign;
 
     [Header("Fight State")]
     public float difficulty = 1;
     public int round = 0;
     public int match = 0;
-    [SerializeField] private int maxMatches = 6;
+    [SerializeField] private int maxMatches = 99;
     [SerializeField] private int maxRounds = 6;
 
     private void Start()
@@ -39,6 +41,11 @@ public class GameController : MonoBehaviour
         opponentGauge = GameObject.FindGameObjectWithTag("Enemy Gauge");
         timerGauge = GameObject.FindGameObjectWithTag("Timer Gauge");
         roundGauge = GameObject.FindGameObjectWithTag("Match Gauge");
+        winSign = GameObject.FindGameObjectWithTag("Win Sign");
+        loseSign = GameObject.FindGameObjectWithTag("Lose Sign");
+        roundGauge = GameObject.FindGameObjectWithTag("Match Gauge");
+        winSign.SetActive(false);
+        loseSign.SetActive(false);
         player = GeneratePlayer();
         curOpponent = GenerateFighter();
         if (_instance != null && _instance != this)
@@ -83,12 +90,14 @@ public class GameController : MonoBehaviour
         
     }
 
-    public void IsPlayerWonFight(){
+    public bool IsPlayerWonFight(){
         if(round > maxRounds && curOpponent.IsFighterLostByScore(player) || curOpponent.IsFighterLostByDamage()){
             match++;
             curOpponent = GenerateFighter();
             round = 0;
+            return true;
         }
+        return false;
     }
 
     public void IsPlayerWonGame(){
@@ -185,6 +194,23 @@ public class GameController : MonoBehaviour
         }
         
 
+    }
+
+    public void ToggleWin(bool isWin){
+        if(isWin){
+            if(winSign.activeInHierarchy){
+                winSign.SetActive(false);
+            }
+            else   
+                winSign.SetActive(true);
+        }
+        if(!isWin){
+            if(loseSign.activeInHierarchy){
+                loseSign.SetActive(false);
+            }
+            else   
+                loseSign.SetActive(true);
+        }
     }
 
     
