@@ -139,6 +139,7 @@ public class GameController : MonoBehaviour
             playerGauge.GetComponent<RectTransform>().anchorMax = new Vector2(0,0.5f);
             playerGauge.SetActive(true);
             playerGauge.GetComponent<RectTransform>().anchoredPosition3D= new Vector3(57,0,0);
+            timerGauge.SetActive(false);
         }
         else if(SceneManager.GetActiveScene().name == "Repair Menu"){
             //Hide Enemy Meter
@@ -148,12 +149,29 @@ public class GameController : MonoBehaviour
             playerGauge.GetComponent<RectTransform>().anchorMin = new Vector2(1,0.5f);
             playerGauge.GetComponent<RectTransform>().anchorMax = new Vector2(1,0.5f);
             playerGauge.GetComponent<RectTransform>().anchoredPosition3D= new Vector3(0,0,0);
+            // move timer
+            timerGauge.SetActive(true);
+            timerGauge.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f,1);
+            timerGauge.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f,1);
+            timerGauge.GetComponent<RectTransform>().anchoredPosition3D= new Vector3(0,-45,0);
+        }
+        else if(SceneManager.GetActiveScene().name == "HeadRepair"){
+            //Hide Enemy Meter
+            opponentGauge.SetActive(false);
+            //Hide Player Meter
+            playerGauge.SetActive(false);
+            //move timer;
+            timerGauge.GetComponent<RectTransform>().anchorMin = new Vector2(0.75f,0.25f);
+            timerGauge.GetComponent<RectTransform>().anchorMax = new Vector2(0.75f,0.25f);
+            timerGauge.GetComponent<RectTransform>().anchoredPosition3D= new Vector3(0,0,0);
         }
         else{
             //Hide Enemy Meter
             opponentGauge.SetActive(false);
             //Hide Player Meter
             playerGauge.SetActive(false);
+            //Hide timer
+            timerGauge.SetActive(false);
         }
         
 
