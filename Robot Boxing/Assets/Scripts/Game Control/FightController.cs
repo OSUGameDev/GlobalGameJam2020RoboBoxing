@@ -38,6 +38,7 @@ public class FightController : MonoBehaviour
         opponent = GameController.curOpponent;
         numHits_player = Random.Range(2,5);
         numHits_opponent = Random.Range(2,5);
+        GameController.Instance.SetBackgroundMusic(GameController.Instance.FightPrepBackground,.75f);
     }
 
     void Update(){
@@ -179,13 +180,9 @@ public class FightController : MonoBehaviour
         startRound = true;
         startButton.GetComponent<Image>().enabled = false;
         startButton.enabled = false;
-        if (GetComponent<AudioSource>() != null)
-        {
-            
-            AudioSource.PlayClipAtPoint(BellSound, transform.position, bellVolume);
-            var audioSrc = GameController.Instance.GetComponent<AudioSource>();
-            audioSrc.Stop();
-        }
+        var audioSrc = GameController.Instance.GetComponent<AudioSource>();
+        audioSrc.volume = .2f;
+        AudioSource.PlayClipAtPoint(BellSound, transform.position, bellVolume);
      }
 
     float AttackArms(Fighter attacker, Fighter defender){
