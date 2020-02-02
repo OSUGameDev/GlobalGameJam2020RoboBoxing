@@ -887,12 +887,18 @@ MonoBehaviour:
   opponent_anim: {fileID: 418866591}
   BellSound: {fileID: 8300000, guid: 358df6120dee1334ba35ef3824eb0f91, type: 3}
   bellVolume: 1
-  hitVolume: 5
+  hitVolume: 0.5
   fightSoundDelay: 0
   hitNoises:
   - {fileID: 8300000, guid: 77bdfa5ac7a904e4096cf1ed29c7ca2d, type: 3}
   - {fileID: 8300000, guid: 8181a2b317398c24a87a59a69aaa08bd, type: 3}
-  - {fileID: 8300000, guid: 8629f4f68e3e08941aa5e4702fc037ef, type: 3}
+  voiceNoises:
+  - {fileID: 8300000, guid: 6c5297aefe7af4644872a508630d03e3, type: 3}
+  - {fileID: 8300000, guid: 2bbd3caf69b1e664fa5984d017d6391a, type: 3}
+  - {fileID: 8300000, guid: e1676ceb182ffd441ab2233ce6310c50, type: 3}
+  - {fileID: 8300000, guid: fdbfa77937c81b245aec7d626a934141, type: 3}
+  - {fileID: 8300000, guid: 41cd6164e0cd52d4e9aafb77e3414197, type: 3}
+  - {fileID: 8300000, guid: bd9e0c27f0534574e8434c5dbec65db5, type: 3}
 --- !u!4 &1278028816
 Transform:
   m_ObjectHideFlags: 0

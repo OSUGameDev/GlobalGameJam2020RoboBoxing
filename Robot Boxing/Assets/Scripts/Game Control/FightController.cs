@@ -27,10 +27,11 @@ public class FightController : MonoBehaviour
 
     public AudioClip BellSound;
     public float bellVolume;
-    public float hitVolume = 0.1f;
+    public float hitVolume = 0.5f;
     public float fightSoundDelay = 0;
 
     [SerializeField] public AudioClip[] hitNoises;
+    [SerializeField] public AudioClip[] voiceNoises;
     
 
 
@@ -60,7 +61,11 @@ public class FightController : MonoBehaviour
     void PlayHit(){
         int n = hitNoises.Length;
         int r = Random.Range(0,n-1);
-        AudioSource.PlayClipAtPoint(hitNoises[r], transform.position, hitVolume);
+        AudioSource.PlayClipAtPoint(hitNoises[r], transform.position, bellVolume);
+        //play voices
+        n = voiceNoises.Length;
+        r = Random.Range(0,n-1);
+        AudioSource.PlayClipAtPoint(voiceNoises[r], transform.position, bellVolume);
     }
 
     void Delay(float delay){
