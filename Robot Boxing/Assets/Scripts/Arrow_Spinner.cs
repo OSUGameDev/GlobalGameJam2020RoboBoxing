@@ -68,7 +68,7 @@ public class Arrow_Spinner : MonoBehaviour
             if (test2 >= 295 && test2 <= 332.5)
             {
                 GameObject.Find("GameController").GetComponentInChildren<Canvas>().enabled = true;
-                GameController.Instance.player.ModifyArm(25);
+                GameController.Instance.player.ModifyCoolant(25);
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
             }
         }

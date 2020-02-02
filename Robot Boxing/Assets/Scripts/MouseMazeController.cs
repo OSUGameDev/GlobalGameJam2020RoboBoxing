@@ -13,6 +13,7 @@ public class MouseMazeController : MonoBehaviour
     public Color PathColor = Color.white;
     public Color TracedPathColor = Color.blue;
     public Color StartColor = Color.red;
+    public bool IsHead = false;
     enum WallState
     {
         NONE = 0,
@@ -268,7 +269,15 @@ public class MouseMazeController : MonoBehaviour
                 if(coords == finish)
                 {
                     int optimalCount = Trail.Count;
-                    GameController.Instance.player.ModifyCableBox(100 * (stepCount / optimalCount));
+                    if(IsHead)
+                    {
+                        GameController.Instance.player.ModifyCircuitBoard(100 * (stepCount / optimalCount));
+                    }
+                    else
+                    {
+                        GameController.Instance.player.ModifyCableBox(100 * (stepCount / optimalCount));
+                    }
+                    
                     UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
                 }
             }
@@ -277,7 +286,8 @@ public class MouseMazeController : MonoBehaviour
                 cells[previousTile.x, previousTile.y].isTrace = false;
                 WriteCell(cells[previousTile.x, previousTile.y]);
                 theText.Apply();
-                this.GetComponent<Image>().sprite = Sprite.Create(theText, new Rect(new Vector2(0, 0), new Vector2(width * cellWidth, height * cellWidth)), new Vector2(width * cellWidth / 2, height * cellWidth / 2));
+                this.GetComponent<Image>().sprite = Sprite.Create(theText, new Rect(new Vector2(0, 0), new Vector2(width * cellWidth , height * cellWidth )), new Vector2(width * cellWidth / 2, height * cellWidth / 2));
+                
                 previousTile = Trail.Pop();
             }
         }
