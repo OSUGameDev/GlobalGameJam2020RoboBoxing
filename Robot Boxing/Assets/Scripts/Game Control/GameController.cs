@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour
     public AudioClip FightBackground;
 
     private AudioClip currentClip;
+
+    public float backgroundVolume = 0.5f;
     public void SetBackgroundMusic(AudioClip clip, float volumne, float delayIfStart = 0)
     {
         var audioSrc = GetComponent<AudioSource>();
@@ -102,15 +104,15 @@ public class GameController : MonoBehaviour
     }
 
     public void LoadFightScene(){
-        SetBackgroundMusic(FightPrepBackground, 1);
+        SetBackgroundMusic(FightPrepBackground, backgroundVolume,0);
         timer = 0;
         SceneManager.LoadScene("Fight Scene", LoadSceneMode.Single);
     }
     public void LoadRepairMenu(){
-        SetBackgroundMusic(RepairBackground, 1);
+        SetBackgroundMusic(RepairBackground, backgroundVolume,0);
         timer = repairTime; //set the timer
         SceneManager.LoadScene("Repair Menu", LoadSceneMode.Single);
-        SetBackgroundMusic(RepairBackground, .25f);
+        SetBackgroundMusic(RepairBackground, backgroundVolume,0);
     }
 
     public bool IsPlayerWonFight(){

@@ -43,7 +43,7 @@ public class FightController : MonoBehaviour
         opponent = GameController.curOpponent;
         numHits_player = Random.Range(2,5);
         numHits_opponent = Random.Range(2,5);
-        GameController.Instance.SetBackgroundMusic(GameController.Instance.FightPrepBackground,.75f);
+        GameController.Instance.SetBackgroundMusic(GameController.Instance.FightPrepBackground,GameController.backgroundVolume,0);
     }
 
     void Update(){
@@ -85,9 +85,9 @@ public class FightController : MonoBehaviour
         if(numHits_player > 0 && delayTime <= 0){
             int attack = 0;
             float damage = 0;
-            switch (GameController.player.focus){
+            switch (0){
                 case 0: //attacks any part randomly
-                    attack = Random.Range(0,5);
+                    attack = Random.Range(0,6);
                     break;
                 case 1: //attacks any part that the opponent uses to attack
                     attack = Random.Range(0,1);
@@ -137,7 +137,7 @@ public class FightController : MonoBehaviour
             //choose part to attack based on focus (set either randomly or by player)
             int attack = 0;
             float damage;
-            switch (opponent.focus){
+            switch (0){
                 case 0: //attacks any part randomly
                     attack = Random.Range(0,6);
                     break;
@@ -190,6 +190,7 @@ public class FightController : MonoBehaviour
             Delay(3);
         }
         if(numHits_opponent == 0 && numHits_player == 0 && GameController.IsPlayerLostGame()){
+            player_anim.SetTrigger("player_knockout");
             GameController.ToggleWin(false);
             Delay(3);
         }

@@ -5082,6 +5082,7 @@ MonoBehaviour:
   RepairBackground: {fileID: 8300000, guid: 0011e9de797fa264dbd399c3035f7c3b, type: 3}
   FightPrepBackground: {fileID: 8300000, guid: c20f41cd01affa440b352c27004cc454, type: 3}
   FightBackground: {fileID: 0}
+  backgroundVolume: 0.2
 --- !u!82 &8499094742177700599
 AudioSource:
   m_ObjectHideFlags: 0
