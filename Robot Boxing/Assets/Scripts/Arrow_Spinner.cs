@@ -9,6 +9,7 @@ public class Arrow_Spinner : MonoBehaviour
     float Target_Pressure;
     float Click;
     float Current_Increment;
+    GameObject arrow = GameObject.Find("Arrow");
     void Start()
     {
         float match2 = (float)GameObject.Find("GameController").GetComponent<GameController>().match + 1.0f;
@@ -22,10 +23,11 @@ public class Arrow_Spinner : MonoBehaviour
     public void Increment()
     {
         Current_Increment += Click;
-        Debug.Log(Current_Increment);
-        GameObject arrow = GameObject.Find("Arrow");
+    }
+
+    void Update()
+    {
         float test = (-360 * (Current_Increment / Target_Pressure));
-        Debug.Log(test);
         Quaternion zero = Quaternion.Euler(0, 0, test);
         arrow.transform.rotation = zero;
     }

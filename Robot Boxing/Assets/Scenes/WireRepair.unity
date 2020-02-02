@@ -522,7 +522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c6d494b59845fc4b842b53d07823a82, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 112275102ba1f744c8bfd2f80de23af0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -703,8 +703,8 @@ MonoBehaviour:
   WallWidth: 4
   WallColor: {r: 0, g: 0, b: 0, a: 1}
   PathColor: {r: 1, g: 1, b: 1, a: 1}
-  TracedPathColor: {r: 0, g: 0.14357352, b: 1, a: 1}
-  StartColor: {r: 1, g: 0, b: 0, a: 1}
+  TracedPathColor: {r: 0.6745098, g: 0.19607845, b: 0.19607845, a: 1}
+  StartColor: {r: 0.6745098, g: 0.19607845, b: 0.19607845, a: 1}
 --- !u!114 &856633176518454263
 MonoBehaviour:
   m_ObjectHideFlags: 0
