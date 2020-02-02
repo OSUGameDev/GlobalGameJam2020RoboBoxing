@@ -11,9 +11,11 @@ public class Arrow_Spinner : MonoBehaviour
     float Current_Increment;
     float time = 0;
     GameObject arrow = GameObject.Find("Arrow");
+
     void Start()
     {
         float match2 = (float)GameObject.Find("GameController").GetComponent<GameController>().match + 1.0f;
+        GameObject.Find("GameController").GetComponentInChildren<Canvas>().enabled = false;
         Debug.Log(match2);
         Target_Pressure = 1000 * match2 + Random.Range(0, 11) * match2;
         Click = Random.Range(0, 10 * match2) + 100;
@@ -64,6 +66,7 @@ public class Arrow_Spinner : MonoBehaviour
             float test2 = test % 360;
             if (test2 >= 295 && test2 <= 332.5)
             {
+                GameObject.Find("GameController").GetComponentInChildren<Canvas>().enabled = true;
                 GameController.Instance.player.ModifyArm(25);
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
             }
