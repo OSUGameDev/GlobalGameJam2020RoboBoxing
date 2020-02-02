@@ -66,8 +66,8 @@ public class GameController : MonoBehaviour
 
     public void IsPlayerWonFight(){
         if(round > maxRounds && curOpponent.IsFighterLostByScore(player) || curOpponent.IsFighterLostByDamage()){
-            curOpponent = GenerateFighter();
             match++;
+            curOpponent = GenerateFighter();
             round = 0;
         }
     }
@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
     //maybe will do something special if the player has won, but for now will do nothing
     public void EndGame(bool hasWon){
         //reset everything so the player an go again.
-        player = GenerateFighter();
+        player = GeneratePlayer();
         curOpponent = GenerateFighter();
         match = 0;
         round = 0;
@@ -100,16 +100,19 @@ public class GameController : MonoBehaviour
     }
 
     public Fighter GenerateFighter(){
+        int handicap = 0;
+        if(match > 0)
+            handicap = 1;
         //difficulty coefficient
         float c = match * difficulty + 1;
         Fighter f = new Fighter();
         f.name = "opponent's robot";
-        f.arm =             100;//25 * difficulty * (Random.Range(match,match+1) + 1);
-        f.leg =             100;//25 * difficulty * (Random.Range(match,match+1) + 1); 
-        f.cableBox =        100;//25 * difficulty * (Random.Range(match,match+1) + 1); 
-        f.circuitBoard =    100;//25 * difficulty * (Random.Range(match,match+1) + 1); 
-        f.eyes =            100;//25 * difficulty * (Random.Range(match,match+1) + 1); 
-        f.coolant =         100;//25 * difficulty * (Random.Range(match,match+1) + 1); 
+        f.arm =             75 + handicap * 25;
+        f.leg =             75 + handicap * 25;
+        f.cableBox =        75 + handicap * 25;
+        f.circuitBoard =    75 + handicap * 25; 
+        f.eyes =            75 + handicap * 25; 
+        f.coolant =         75 + handicap * 25;
         f.focus = Random.Range(1,3);
         return f;
     }
