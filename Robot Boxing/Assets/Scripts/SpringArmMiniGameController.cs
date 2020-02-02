@@ -9,7 +9,7 @@ public class SpringArmMiniGameController : MonoBehaviour
     public float K = .1f;
     public float clickAmount = .1f;
     public float minimum = .15f;
-
+    public bool isDone;
 
     private float scale;
     float height;
@@ -28,7 +28,7 @@ public class SpringArmMiniGameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        isDone = false;
         height = GetComponent<RectTransform>().rect.height;
         orignalY = transform.localPosition.y;
         scale = 1;
@@ -47,7 +47,10 @@ public class SpringArmMiniGameController : MonoBehaviour
 
 
         if (scale < minimum)
+        {
             scale = 0;
+            isDone = true;
+        }
         scale = scale < 0 ? 0 : scale;
         renderSpring();
     }
