@@ -65,7 +65,7 @@ public class ButtonController : MonoBehaviour
     }
     void LegButton()
     {
-
+        SceneManager.LoadScene("LegRepair", LoadSceneMode.Single);
         GameController.player.ModifyLeg(1);
     }
     void CoolantButton()

@@ -5,14 +5,17 @@ using UnityEngine;
 public class LegGame : MonoBehaviour
 {
     List<int> Sequence = new List<int>();
+    List<int> Player_Sequence = new List<int>();
     GameObject background;
     float timer = 0;
-    float time = 0;
+    float time = 1;
     bool blue = false;
     bool green = false;
     bool red = false;
     bool yellow = false;
+    bool wait = false;
     int counter = 0;
+    bool done = false;
 
     [SerializeField]
     Sprite bluelight_0;
@@ -46,29 +49,51 @@ public class LegGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(counter);
+
+        if (done == true)
+        {
+            for (int i = 0; i < Sequence.Count; i++)
+            {
+                if (Sequence[i] != Player_Sequence[i])
+                {
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("RepairLeg", UnityEngine.SceneManagement.LoadSceneMode.Single);
+                }
+            }
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
+        }
+
+        // Debug.Log(time.ToString() + " " + timer.ToString());
         timer += Time.deltaTime;
-        if (blue == true && time > 0)
+        if (wait == true)
+        {
+            if (time < timer)
+            {
+                wait = false;
+                timer = 0;
+                lightOn(Sequence[counter]);
+                counter++;
+            }
+        } else if (blue == true)
         {
             if (time < timer)
             {
                 lightOff(0);
             }
-        } else if (green == true && time > 0)
+        } else if (green == true)
         {
             if (time < timer)
             {
                 lightOff(1);
             }
         }
-        else if (red == true && time > 0)
+        else if (red == true)
         {
             if (time < timer)
             {
                 lightOff(2);
             }
         }
-        else if (yellow == true && time > 0)
+        else if (yellow == true)
         {
             if (time < timer)
             {
@@ -86,24 +111,20 @@ public class LegGame : MonoBehaviour
         if (button == 0)
         {
             background.transform.Find("BlueLight").GetComponent<SpriteRenderer>().sprite = bluelight_0;
-            time = 1;
             blue = true;
         } else if (button == 1)
         {
             background.transform.Find("GreenLight").GetComponent<SpriteRenderer>().sprite = greenlight_0;
-            time = 1;
             green = true;
         }
         else if (button == 2)
         {
             background.transform.Find("RedLight").GetComponent<SpriteRenderer>().sprite = redlight_0;
-            time = 1;
             red = true;
         }
         else if (button == 3)
         {
             background.transform.Find("YellowLight").GetComponent<SpriteRenderer>().sprite = yellowlight_0;
-            time = 1;
             yellow = true;
         } else
         {
@@ -113,49 +134,27 @@ public class LegGame : MonoBehaviour
 
     void lightOff(int button)
     {
+        timer = 0;
+        wait = true;
         if (button == 0)
         {
             background.transform.Find("BlueLight").GetComponent<SpriteRenderer>().sprite = bluelight_1;
             blue = false;
-            if (Sequence.Count > counter)
-            {
-                time = 1;
-                lightOn(Sequence[counter]);
-                counter++;
-            }
         }
         else if (button == 1)
         {
             background.transform.Find("GreenLight").GetComponent<SpriteRenderer>().sprite = greenlight_1;
             green = false;
-            if (Sequence.Count > counter)
-            {
-                time = 1;
-                lightOn(Sequence[counter]);
-                counter++;
-            }
         }
         else if (button == 2)
         {
             background.transform.Find("RedLight").GetComponent<SpriteRenderer>().sprite = redlight_1;
             red = false;
-            if (Sequence.Count > counter)
-            {
-                time = 1;
-                lightOn(Sequence[counter]);
-                counter++;
-            }
         }
         else if (button == 3)
         {
             background.transform.Find("YellowLight").GetComponent<SpriteRenderer>().sprite = yellowlight_1;
             yellow = false;
-            if (Sequence.Count > counter)
-            {
-                time = 1;
-                lightOn(Sequence[counter]);
-                counter++;
-            }
         }
         else
         {
@@ -165,18 +164,33 @@ public class LegGame : MonoBehaviour
 
     public void buttonPressedBlue()
     {
-        
+        Player_Sequence.Add(0);
+        if (Sequence.Count == Player_Sequence.Count) {
+            done = true;
+        }
     }
     public void buttonPressedGreen()
     {
-        
+        Player_Sequence.Add(1);
+        if (Sequence.Count == Player_Sequence.Count)
+        {
+            done = true;
+        }
     }
     public void buttonPressedRed()
     {
-        
+        Player_Sequence.Add(2);
+        if (Sequence.Count == Player_Sequence.Count)
+        {
+            done = true;
+        }
     }
     public void buttonPressedYellow()
     {
-        
+        Player_Sequence.Add(3);
+        if (Sequence.Count == Player_Sequence.Count)
+        {
+            done = true;
+        }
     }
 }
