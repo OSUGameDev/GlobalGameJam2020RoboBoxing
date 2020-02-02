@@ -42,7 +42,7 @@ public class MouseMazeController : MonoBehaviour
         }
     }
 
-
+    int stepCount = 0;
     private Cell[,] cells;
     Stack<Cell> currentPath;
     Texture2D theText;
@@ -136,13 +136,13 @@ public class MouseMazeController : MonoBehaviour
         }
         theText = new Texture2D(width * cellWidth, height * cellWidth);
 
-        Cell startCell = cells[Random.Range(0, width), 0];
+        Cell startCell = cells[0, height - 1];
         startCell.isSpecial = true;
         startCell.walls = startCell.walls & (WallState.ALL ^ WallState.BOTTOM);
         start = startCell.position;
         previousTile = startCell.position;
 
-        Cell endCell = cells[Random.Range(0, width), height - 1];
+        Cell endCell = cells[width - 1, 0];
         endCell.isSpecial = true;
         endCell.walls = endCell.walls & (WallState.ALL ^ WallState.TOP);
         finish = endCell.position;
@@ -249,12 +249,20 @@ public class MouseMazeController : MonoBehaviour
             Vector2Int coords = new Vector2Int((int)(position.x / Dimeniosn.x * width), (int)(position.y / Dimeniosn.y * height));
             if ((previousTile != coords) && checkIsValidMove(previousTile, coords) && (Trail.Count == 0 || Trail.Peek() != coords))
             {
+                stepCount++;
                 Trail.Push(previousTile);
                 previousTile = coords;
                 cells[coords.x, coords.y].isTrace = true;
                 WriteCell(cells[coords.x, coords.y]);
                 theText.Apply();
                 this.GetComponent<Image>().sprite = Sprite.Create(theText, new Rect(new Vector2(0, 0), new Vector2(width * cellWidth, height * cellWidth)), new Vector2(width * cellWidth / 2, height * cellWidth / 2));
+
+                if(coords == finish)
+                {
+                    int optimalCount = Trail.Count;
+                    GameController.Instance.player.ModifyCableBox(100 * (stepCount / optimalCount));
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
+                }
             }
             else if(Trail.Count > 0 && Trail.Peek() == coords)
             {

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/WireRepair.unity
+    guid: a8eec9f559f35d14c9a9688f732b922f
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 078107459cee9db4bb809b74e6bac90f
   - enabled: 1
