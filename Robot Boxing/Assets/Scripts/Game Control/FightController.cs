@@ -61,9 +61,7 @@ public class FightController : MonoBehaviour
     void Update(){
         //set up a basic timer that activates when attacking becomes true;
         UpdateDelayTimer();
-        if(delayTime > 0)
-            Debug.Log("Delaying = " + delayTime);
-        else{                
+        if(delayTime <= 0){         
                 if(startRound){
                     CalculateHits();
                 }
