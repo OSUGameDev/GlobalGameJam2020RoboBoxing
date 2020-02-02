@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class AudioInformation
+{
+    public AudioClip clip;
+    public bool loop;
+    public float volumne;
+    public float startTime;
+    public float endTime;
+}
+
 public class FightController : MonoBehaviour
 {
     //Make sure to attach these Buttons in the Inspector
@@ -25,6 +35,9 @@ public class FightController : MonoBehaviour
     [SerializeField] private Animator player_anim;
     [SerializeField] private Animator opponent_anim;
 
+    public AudioInformation waitingSoundInfo;
+    public AudioInformation fightingSoundInfo;
+
 
     void Start()
     {
@@ -34,6 +47,14 @@ public class FightController : MonoBehaviour
         opponent = GameController.curOpponent;
         numHits_player = Random.Range(2,5);
         numHits_opponent = Random.Range(2,5);
+
+        if(GetComponent<AudioSource>() != null)
+        {
+            GetComponent<AudioSource>().clip = waitingSoundInfo.clip.MakeSubclip(waitingSoundInfo.startTime, waitingSoundInfo.endTime);
+            GetComponent<AudioSource>().loop = waitingSoundInfo.loop;
+            GetComponent<AudioSource>().volume = waitingSoundInfo.volumne;
+            GetComponent<AudioSource>().Play();
+        }
     }
 
     void Update(){
@@ -153,8 +174,15 @@ public class FightController : MonoBehaviour
         startRound = true;
         startButton.GetComponent<Image>().enabled = false;
         startButton.enabled = false;
-        
-    }
+        if (GetComponent<AudioSource>() != null)
+        {
+            GetComponent<AudioSource>().Stop();
+            GetComponent<AudioSource>().clip = fightingSoundInfo.clip.MakeSubclip(fightingSoundInfo.startTime, fightingSoundInfo.endTime);
+            GetComponent<AudioSource>().loop = fightingSoundInfo.loop;
+            GetComponent<AudioSource>().volume = fightingSoundInfo.volumne;
+            GetComponent<AudioSource>().Play();
+        }
+     }
 
     void AttackArms(Fighter attacker, Fighter defender){
         float damage = AttackCalclate(attacker,defender);

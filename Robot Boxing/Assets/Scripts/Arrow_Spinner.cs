@@ -6,6 +6,10 @@ public class Arrow_Spinner : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public AudioClip clickSound;
+    public float audioStartTime;
+    public float audioEndTime;
+
     float Target_Pressure;
     float Click;
     float Current_Increment;
@@ -28,6 +32,11 @@ public class Arrow_Spinner : MonoBehaviour
     public void Increment()
     {
         time += Click;
+        if (GetComponent<AudioSource>() != null)
+        {
+            GetComponent<AudioSource>().clip = clickSound.MakeSubclip(audioStartTime, audioEndTime);
+            GetComponent<AudioSource>().Play();
+        }
     }
 
     void Update()

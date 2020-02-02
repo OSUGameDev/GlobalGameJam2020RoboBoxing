@@ -15,7 +15,7 @@ public static class VectorExtendor
         int frequency = clip.frequency;
         float timeLength = stop - start;
         int samplesLength = (int)(frequency * timeLength);
-        AudioClip newClip = AudioClip.Create(clip.name + "-sub", samplesLength, 1, frequency, false);
+        AudioClip newClip = AudioClip.Create(clip.name + "-sub", samplesLength, clip.channels, frequency, false);
         /* Create a temporary buffer for the samples */
         float[] data = new float[samplesLength];
         /* Get the data from the original clip */
