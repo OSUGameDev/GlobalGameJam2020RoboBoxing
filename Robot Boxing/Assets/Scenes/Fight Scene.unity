@@ -155,7 +155,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.0011034012}
-  m_SizeDelta: {x: 480, y: 212.37}
+  m_SizeDelta: {x: 480, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &189076128
 MonoBehaviour:
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 418866590}
   - component: {fileID: 418866589}
   - component: {fileID: 418866591}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bad_Guy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: dd6f4f650d4a6664eb7a88e1ff5dc65c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -680,7 +680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -45, y: 15}
+  m_AnchoredPosition: {x: 183, y: -87}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885879235
@@ -1010,6 +1010,7 @@ GameObject:
   - component: {fileID: 1590142881}
   - component: {fileID: 1590142880}
   - component: {fileID: 1590142879}
+  - component: {fileID: 1590142883}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1086,7 +1087,7 @@ RectTransform:
   m_GameObject: {fileID: 1590142878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.2854167, y: 1.2854167, z: 1.2854167}
   m_Children:
   - {fileID: 885879234}
   m_Father: {fileID: 0}
@@ -1096,7 +1097,21 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1590142883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590142878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 2.2861736
 --- !u!1 &1728887014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1123,7 @@ GameObject:
   - component: {fileID: 1728887016}
   - component: {fileID: 1728887015}
   - component: {fileID: 1728887017}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1152,7 +1167,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1139518159
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d72a03c1a3df2114db4474a796a4f6dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1275,6 +1290,7 @@ GameObject:
   - component: {fileID: 1907454958}
   - component: {fileID: 1907454957}
   - component: {fileID: 1907454956}
+  - component: {fileID: 1907454960}
   m_Layer: 9
   m_Name: BackgroundCanvas
   m_TagString: Untagged
@@ -1330,7 +1346,7 @@ Canvas:
   m_GameObject: {fileID: 1907454955}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 618104567}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1350,8 +1366,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907454955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.041331727, y: 0.041331727, z: 0.041331727}
   m_Children:
   - {fileID: 189076127}
   m_Father: {fileID: 0}
@@ -1361,4 +1377,18 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1907454960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907454955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 2.2861736
