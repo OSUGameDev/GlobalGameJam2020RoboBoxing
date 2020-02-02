@@ -50,7 +50,7 @@ public class ButtonController : MonoBehaviour
     void ArmButton()
     {
         //SceneManager.LoadScene("", LoadSceneMode.Single);
-        SceneManager.LoadScene("PressureRepair", LoadSceneMode.Single);
+        SceneManager.LoadScene("ArmSpring", LoadSceneMode.Single);
         GameController.player.ModifyArm(1);
     }
     void CableBoxButton()
@@ -70,7 +70,7 @@ public class ButtonController : MonoBehaviour
     }
     void CoolantButton()
     {
-        
+        SceneManager.LoadScene("PressureRepair", LoadSceneMode.Single);
         GameController.player.ModifyCoolant(1);
     }
     void FightButton(){
