@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameController : MonoBehaviour
 {
     private static GameController _instance;
@@ -32,6 +33,24 @@ public class GameController : MonoBehaviour
     public int match = 0;
     [SerializeField] private int maxMatches = 6;
     [SerializeField] private int maxRounds = 6;
+
+    public AudioClip RepairBackground;
+    public AudioClip FightPrepBackground;
+    public AudioClip FightBackground;
+
+    private AudioClip currentClip;
+    private void SetBackgroundMusic(AudioClip clip, float volumne, float delayIfStart = 0)
+    {
+        var audioSrc = GetComponent<AudioSource>();
+        audioSrc.volume = volumne;
+        if (clip == currentClip)
+            return;
+        audioSrc.Stop();
+        audioSrc.clip = clip;
+        audioSrc.loop = true;
+        audioSrc.PlayDelayed(delayIfStart);
+
+    }
 
     private void Start()
     {
@@ -74,13 +93,14 @@ public class GameController : MonoBehaviour
     }
 
     public void LoadFightScene(){
+        SetBackgroundMusic(FightPrepBackground, 1);
         timer = 0;
         SceneManager.LoadScene("Fight Scene", LoadSceneMode.Single);
     }
     public void LoadRepairMenu(){
+        SetBackgroundMusic(RepairBackground, 1);
         timer = repairTime; //set the timer
         SceneManager.LoadScene("Repair Menu", LoadSceneMode.Single);
-        
     }
 
     public void IsPlayerWonFight(){
