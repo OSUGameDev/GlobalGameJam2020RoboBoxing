@@ -80,7 +80,12 @@ public class FightController : MonoBehaviour
     }
 
     void CalculateHits(){
-        
+        if(numHits_player <= 0)
+            turn = 1;
+        if(numHits_opponent <= 0)
+            turn = 0;
+
+
         if(numHits_player > 0 && delayTime <= 0){
             int attack = 0;
             float damage = 0;
@@ -122,10 +127,12 @@ public class FightController : MonoBehaviour
             numHits_player--;
             Delay(attackTime);
             turn = 1;
-            if(attack >= 3)
+            if(attack > 1)
                 player_anim.Play("player_punch");
-            else
+            else if(attack > 3)
                 player_anim.Play("player_jab");
+            else
+                player_anim.Play("player_swipe");
         }
 
         if(numHits_opponent > 0 && delayTime <= 0){
@@ -167,7 +174,10 @@ public class FightController : MonoBehaviour
                     damage =AttackCoolant(opponent,GameController.player);
                     break;
             }
-                opponent_anim.Play("enemy_jab");
+                if(attack >= 3)
+                    opponent_anim.Play("enemy_jab");
+                else
+                    opponent_anim.Play("badguy_swipe");
                 numHits_opponent--;
                 Delay(attackTime);
                 turn = 0;
@@ -175,8 +185,12 @@ public class FightController : MonoBehaviour
 
     }
     private void CheckConditions(){
-        if(GameController.IsPlayerWonFight()){
+        if(numHits_opponent == 0 && numHits_player == 0 && GameController.IsPlayerWonFight()){
             GameController.ToggleWin(true);
+            Delay(3);
+        }
+        if(numHits_opponent == 0 && numHits_player == 0 && GameController.IsPlayerLostGame()){
+            GameController.ToggleWin(false);
             Delay(3);
         }
         
@@ -187,8 +201,10 @@ public class FightController : MonoBehaviour
                 GameController.ToggleWin(false);
             GameController.curOpponent = opponent;
             GameController.round++;
-            GameController.CheckConditions(); //If this passes then we will go to main menu instead
-            GameController.LoadRepairMenu();
+            if(GameController.IsPlayerLostGame())
+                GameController.CheckConditions(); //If this passes then we will go to main menu instead
+            else
+                GameController.LoadRepairMenu();
         }
     }
 

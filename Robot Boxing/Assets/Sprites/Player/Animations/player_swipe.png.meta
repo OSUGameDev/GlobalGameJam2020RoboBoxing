@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 137171f6460831046a7d73a3ef889da9
+guid: 5139516f18b556749a8797fb018fd53e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7801909326748082746
-    second: Badguy_Idle_Defense_0
+      213: 7810184492960801875
+    second: player_swipe_0
   - first:
-      213: 6235912500064643036
-    second: Badguy_Idle_Defense_1
+      213: -1570694864137339920
+    second: player_swipe_1
   - first:
-      213: 411595849156240675
-    second: Badguy_Idle_Defense_2
+      213: -6132552252633012219
+    second: player_swipe_2
   - first:
-      213: 6061311433665758383
-    second: Badguy_Idle_Defense_3
+      213: 8771291119032962387
+    second: player_swipe_3
+  - first:
+      213: 5581826794483070105
+    second: player_swipe_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -98,7 +101,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Badguy_Idle_Defense_0
+      name: player_swipe_0
       rect:
         serializedVersion: 2
         x: 11
@@ -106,77 +109,98 @@ TextureImporter:
         width: 44
         height: 83
       alignment: 9
-      pivot: {x: 0.1575574, y: 0.08158207}
+      pivot: {x: 0.15024923, y: 0.07106624}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfa47e561a556984caface7e7b1ff353
-      internalID: 7801909326748082746
+      spriteID: 6a8f8d82f114757458ce0a07aedba536
+      internalID: 7810184492960801875
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Badguy_Idle_Defense_1
+      name: player_swipe_1
       rect:
         serializedVersion: 2
         x: 74
         y: 7
         width: 44
-        height: 81
+        height: 82
       alignment: 9
-      pivot: {x: 0.17843749, y: 0.080324925}
+      pivot: {x: 0.1606896, y: 0.060233198}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65b8224ef26a2eb40865df29c0603bf4
-      internalID: 6235912500064643036
+      spriteID: 004dccbd734b5a24682fed51f408dd78
+      internalID: -1570694864137339920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Badguy_Idle_Defense_2
+      name: player_swipe_2
       rect:
         serializedVersion: 2
-        x: 139
+        x: 136
+        y: 6
+        width: 56
+        height: 80
+      alignment: 9
+      pivot: {x: 0.10625076, y: 0.07507876}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2c1a80ed1e72248b71265655dbde8a
+      internalID: -6132552252633012219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_swipe_3
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 7
+        width: 44
+        height: 82
+      alignment: 9
+      pivot: {x: 0.1606896, y: 0.063034266}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4609717dfe529d4fb3a061b53878eb2
+      internalID: 8771291119032962387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_swipe_4
+      rect:
+        serializedVersion: 2
+        x: 267
         y: 7
         width: 44
         height: 83
       alignment: 9
-      pivot: {x: 0.15755671, y: 0.079368226}
+      pivot: {x: 0.15546903, y: 0.06829893}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a2f8eb355dce104dbe53e06eeb70d35
-      internalID: 411595849156240675
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Badguy_Idle_Defense_3
-      rect:
-        serializedVersion: 2
-        x: 204
-        y: 7
-        width: 44
-        height: 81
-      alignment: 9
-      pivot: {x: 0.1408525, y: 0.080324925}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2c0c87aefa3ec04baf4f04fa0fd95fc
-      internalID: 6061311433665758383
+      spriteID: 91cbb7e9187000f4c8bccd635031c1b4
+      internalID: 5581826794483070105
       vertices: []
       indices: 
       edges: []

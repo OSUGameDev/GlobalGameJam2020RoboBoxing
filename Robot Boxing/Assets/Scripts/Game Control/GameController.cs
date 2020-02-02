@@ -100,15 +100,21 @@ public class GameController : MonoBehaviour
         return false;
     }
 
-    public void IsPlayerWonGame(){
+    public bool IsPlayerWonGame(){
         //if reached past the max number of matches
-        if(match > maxMatches)
+        if(match > maxMatches){
             EndGame(true);
+            return true;
+        }
+        return false;
     }
 
-    public void IsPlayerLostGame(){
-        if(player.IsFighterLostByDamage() || round > maxRounds && player.IsFighterLostByScore(curOpponent))
+    public bool IsPlayerLostGame(){
+        if(player.IsFighterLostByDamage() || round > maxRounds && player.IsFighterLostByScore(curOpponent)){
             EndGame(false);
+            return true;
+        }
+        return false;
     }
 
     //maybe will do something special if the player has won, but for now will do nothing
