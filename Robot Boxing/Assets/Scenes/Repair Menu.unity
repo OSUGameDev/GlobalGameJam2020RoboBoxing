@@ -1425,8 +1425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyesButton: {fileID: 689037800}
-  cableBoxButton: {fileID: 105190}
-  armButton: {fileID: 528065219}
+  cableBoxButton: {fileID: 528065219}
+  armButton: {fileID: 105190}
   circuitBoardButton: {fileID: 321938179}
   legButton: {fileID: 1346813119}
   coolantButton: {fileID: 1723914376}
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0.599
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 480, y: 270}
-  m_ScreenMatchMode: 2
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2064,6 +2064,42 @@ PrefabInstance:
     - target: {fileID: 3504307362573721250, guid: 5547208e780e44e488b8eca4cb375a1e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380950070, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380950070, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380950070, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340181510, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340181510, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340181510, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050891, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050891, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050891, guid: 5547208e780e44e488b8eca4cb375a1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
