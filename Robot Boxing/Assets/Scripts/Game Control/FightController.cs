@@ -67,8 +67,10 @@ public class FightController : MonoBehaviour
                 if(startRound){
                     CalculateHits();
                 }
-            }
+                
         }
+        CheckConditions();
+    }
 
     void Delay(float delay){
         delayTime = delay;
@@ -78,8 +80,8 @@ public class FightController : MonoBehaviour
     }
 
     void CalculateHits(){
-
-        if(numHits_player > 0 && turn == 0){
+        
+        if(numHits_player > 0 && delayTime <= 0){
             int attack = 0;
             float damage = 0;
             switch (GameController.player.focus){
@@ -126,7 +128,7 @@ public class FightController : MonoBehaviour
                 player_anim.Play("player_jab");
         }
 
-        if(numHits_opponent > 0 && turn == 1){
+        if(numHits_opponent > 0 && delayTime <= 0){
             //choose part to attack based on focus (set either randomly or by player)
             int attack = 0;
             float damage;
@@ -171,9 +173,11 @@ public class FightController : MonoBehaviour
                 turn = 0;
         }
 
+    }
+    private void CheckConditions(){
         if(GameController.IsPlayerWonFight()){
             GameController.ToggleWin(true);
-            Delay(5);
+            Delay(3);
         }
         
         if(numHits_opponent == 0 && numHits_player == 0 && delayTime <= 0){
