@@ -54,19 +54,21 @@ public class GameController : MonoBehaviour
 
     }
 
+
     private void Start()
     {
+        winSign = GameObject.FindGameObjectWithTag("Win Sign");
+        loseSign = GameObject.FindGameObjectWithTag("Lose Sign");
         playerGauge = GameObject.FindGameObjectWithTag("Player Gauge");
         opponentGauge = GameObject.FindGameObjectWithTag("Enemy Gauge");
         timerGauge = GameObject.FindGameObjectWithTag("Timer Gauge");
         roundGauge = GameObject.FindGameObjectWithTag("Match Gauge");
-        winSign = GameObject.FindGameObjectWithTag("Win Sign");
-        loseSign = GameObject.FindGameObjectWithTag("Lose Sign");
         roundGauge = GameObject.FindGameObjectWithTag("Match Gauge");
         winSign.SetActive(false);
         loseSign.SetActive(false);
         player = GeneratePlayer();
         curOpponent = GenerateFighter();
+        
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);

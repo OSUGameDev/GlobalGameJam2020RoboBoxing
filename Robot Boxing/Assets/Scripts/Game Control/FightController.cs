@@ -180,6 +180,7 @@ public class FightController : MonoBehaviour
                 GameController.ToggleWin(true);
             if(GameController.loseSign.activeInHierarchy)
                 GameController.ToggleWin(false);
+                
             GameController.round++;
             GameController.curOpponent = opponent;
 
