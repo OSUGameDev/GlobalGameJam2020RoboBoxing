@@ -13,9 +13,10 @@ public class LegGame : MonoBehaviour
     bool green = false;
     bool red = false;
     bool yellow = false;
-    bool wait = false;
+    bool wait = true;
     int counter = 0;
     bool done = false;
+    bool broken = false;
 
     [SerializeField]
     Sprite bluelight_0;
@@ -42,8 +43,6 @@ public class LegGame : MonoBehaviour
         {
             Sequence.Add(Random.Range(0, 4));
         }
-        lightOn(Sequence[counter]);
-        counter++;
     }
 
     // Update is called once per frame
@@ -56,10 +55,18 @@ public class LegGame : MonoBehaviour
             {
                 if (Sequence[i] != Player_Sequence[i])
                 {
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("RepairLeg", UnityEngine.SceneManagement.LoadSceneMode.Single);
+                    Debug.Log("Broken");
+                    broken = true;
                 }
             }
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
+            if (broken == true)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("LegRepair", UnityEngine.SceneManagement.LoadSceneMode.Single);
+            } else
+            {
+                GameController.Instance.player.ModifyLeg(25);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
+            }
         }
 
         // Debug.Log(time.ToString() + " " + timer.ToString());
