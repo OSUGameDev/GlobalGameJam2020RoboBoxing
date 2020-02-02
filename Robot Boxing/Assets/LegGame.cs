@@ -8,7 +8,7 @@ public class LegGame : MonoBehaviour
     List<int> Player_Sequence = new List<int>();
     GameObject background;
     float timer = 0;
-    float time = 1;
+    float time = .5f;
     bool blue = false;
     bool green = false;
     bool red = false;
