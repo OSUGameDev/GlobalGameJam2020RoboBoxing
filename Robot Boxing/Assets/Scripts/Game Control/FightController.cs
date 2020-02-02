@@ -51,7 +51,7 @@ public class FightController : MonoBehaviour
 
         if(GetComponent<AudioSource>() != null)
         {
-            GetComponent<AudioSource>().clip = waitingSoundInfo.clip.MakeSubclip(waitingSoundInfo.startTime, waitingSoundInfo.endTime);
+            GetComponent<AudioSource>().clip = waitingSoundInfo.clip;
             GetComponent<AudioSource>().loop = waitingSoundInfo.loop;
             GetComponent<AudioSource>().volume = waitingSoundInfo.volumne;
             GetComponent<AudioSource>().Play();
