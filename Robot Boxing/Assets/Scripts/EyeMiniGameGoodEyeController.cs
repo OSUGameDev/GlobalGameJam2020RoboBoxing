@@ -9,7 +9,7 @@ public class EyeMiniGameGoodEyeController : MonoBehaviour
     public Vector3 DesiredLocation;
     public UnityEvent onMag = new UnityEvent();
     public bool canBeInstalled = false;
-
+    public bool hasReportedInstall = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +19,10 @@ public class EyeMiniGameGoodEyeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((DesiredLocation - this.transform.position).sqrMagnitude < MagDistance * MagDistance && canBeInstalled)
+        if((DesiredLocation - this.transform.position).sqrMagnitude < MagDistance * MagDistance && canBeInstalled && !hasReportedInstall)
         {
             this.transform.position = DesiredLocation;
+            hasReportedInstall = true;
             onMag?.Invoke();
         }
     }

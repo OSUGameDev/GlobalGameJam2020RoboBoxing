@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
@@ -45,23 +46,22 @@ public class ButtonController : MonoBehaviour
     */
     void EyesButton()
     {
-
-        GameController.player.ModifyEyes(1);
+        SceneManager.LoadScene("EyeRepair", LoadSceneMode.Single);
     }
     void ArmButton()
     {
-
+        //SceneManager.LoadScene("", LoadSceneMode.Single);
         GameController.player.ModifyArm(1);
     }
     void CableBoxButton()
     {
-
-        GameController.player.ModifyCableBox(1);
+        SceneManager.LoadScene("WireRepair", LoadSceneMode.Single);
+        //GameController.player.ModifyCableBox(1);
     }
     void CircuitBoardButton()
     {
 
-        GameController.player.ModifyCircuitBoard(1);
+        //GameController.player.ModifyCircuitBoard(1);
     }
     void LegButton()
     {
