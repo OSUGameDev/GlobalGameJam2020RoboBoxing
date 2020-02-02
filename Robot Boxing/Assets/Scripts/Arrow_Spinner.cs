@@ -9,9 +9,10 @@ public class Arrow_Spinner : MonoBehaviour
     float Target_Pressure;
     float Click;
     float Current_Increment;
-    GameObject arrow = GameObject.Find("Arrow");
+    GameObject arrow;
     void Start()
     {
+        arrow = GameObject.Find("Arrow"); //build error happens if you do it during serialization
         float match2 = (float)GameObject.Find("GameController").GetComponent<GameController>().match + 1.0f;
         Debug.Log(match2);
         Target_Pressure = 1000 * match2 + Random.Range(0, 11) * match2;
