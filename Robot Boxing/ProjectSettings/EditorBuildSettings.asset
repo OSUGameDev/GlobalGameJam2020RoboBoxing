@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EyeRepair.unity
     guid: 9f28664b185b056409248eefbf76fc53
+  - enabled: 1
+    path: Assets/Scenes/PressureRepair.unity
+    guid: 1db203f6e25236f42a8532d8f5a5b424
   m_configObjects: {}

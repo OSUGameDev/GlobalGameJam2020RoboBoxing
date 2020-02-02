@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class VectorExtendor
+{
+    public static Vector3 ComponetMultiply(this Vector3 a, Vector3 b)
+    {
+        return new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
+    }
+}
+
 public class EyeMiniGameController : MonoBehaviour
 {
 
@@ -26,13 +34,14 @@ public class EyeMiniGameController : MonoBehaviour
         {
             GameObject newScrew = GameObject.Instantiate(ScrewPrefab, transform);
             newScrew.transform.position +=
-            Quaternion.Euler(0, 0, degrees * (float)i) * new Vector3(Radius, 0, 0) + transform.GetChild(0).localPosition;
+            Quaternion.Euler(0, 0, degrees * (float)i) * new Vector3(Radius, 0, 0).ComponetMultiply(transform.GetChild(0).transform.lossyScale) 
+            + transform.GetChild(0).localPosition.ComponetMultiply(transform.GetChild(0).transform.lossyScale);
             newScrew.GetComponent<EyeMiniGameScrewController>().afterEvent.AddListener(() => ScrewUndone(newScrew));
             screws.Add(newScrew.GetComponent<EyeMiniGameScrewController>());
-
-
         }
     }
+
+
 
     void ScrewUndone(GameObject obj)
     {
