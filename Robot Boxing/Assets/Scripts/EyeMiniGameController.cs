@@ -26,7 +26,7 @@ public class EyeMiniGameController : MonoBehaviour
         {
             GameObject newScrew = GameObject.Instantiate(ScrewPrefab, transform);
             newScrew.transform.position +=
-            Quaternion.Euler(0, 0, degrees * (float)i) * new Vector3(Radius, 0, 0);
+            Quaternion.Euler(0, 0, degrees * (float)i) * new Vector3(Radius, 0, 0) + transform.GetChild(0).localPosition;
             newScrew.GetComponent<EyeMiniGameScrewController>().afterEvent.AddListener(() => ScrewUndone(newScrew));
             screws.Add(newScrew.GetComponent<EyeMiniGameScrewController>());
 
@@ -36,22 +36,26 @@ public class EyeMiniGameController : MonoBehaviour
 
     void ScrewUndone(GameObject obj)
     {
-        numScrewsDone++;
+        this.numScrewsDone = numScrewsDone + 1;
         if (isScrewingIn)
         {
             if (numScrewsDone == NumbScrews)
             {
-                //todo bedone
+                GameController.Instance.player.ModifyEyes(50);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Repair Menu", UnityEngine.SceneManagement.LoadSceneMode.Single);
             }
-            return;
+        }
+        else
+        {
+            obj.GetComponent<EyeMiniGameScrewController>().hideScrew();
+            if (numScrewsDone == NumbScrews)
+            {
+                CrackedEye.GetComponent<ClickAndDrag>().SetDraggable(true);
+                NewEye.GetComponent<EyeMiniGameGoodEyeController>().canBeInstalled = true;
+            }
         }
         
-        obj.GetComponent<EyeMiniGameScrewController>().hideScrew();
-        if (numScrewsDone == NumbScrews)
-        {
-            CrackedEye.GetComponent<ClickAndDrag>().SetDraggable(true);
-            NewEye.GetComponent<EyeMiniGameGoodEyeController>().canBeInstalled = true;
-        }
+
     }
 
     void OnFinish()
