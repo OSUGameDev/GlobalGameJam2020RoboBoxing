@@ -637,6 +637,7 @@ MonoBehaviour:
   PathColor: {r: 1, g: 1, b: 1, a: 1}
   TracedPathColor: {r: 0.6745098, g: 0.19607845, b: 0.19607845, a: 1}
   StartColor: {r: 0.6745098, g: 0.19607845, b: 0.19607845, a: 1}
+  IsHead: 1
 --- !u!114 &856633176518454263
 MonoBehaviour:
   m_ObjectHideFlags: 0

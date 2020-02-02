@@ -60,7 +60,7 @@ public class ButtonController : MonoBehaviour
     }
     void CircuitBoardButton()
     {
-        SceneManager.LoadScene("WireRepair", LoadSceneMode.Single);
+        SceneManager.LoadScene("HeadRepair", LoadSceneMode.Single);
         //GameController.player.ModifyCircuitBoard(1);
     }
     void LegButton()
