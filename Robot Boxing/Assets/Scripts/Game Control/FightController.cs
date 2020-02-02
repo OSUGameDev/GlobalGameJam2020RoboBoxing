@@ -5,16 +5,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class AudioInformation
-{
-    public AudioClip clip;
-    public bool loop;
-    public float volumne;
-    public float startTime;
-    public float endTime;
-}
-
 public class FightController : MonoBehaviour
 {
     //Make sure to attach these Buttons in the Inspector
@@ -35,9 +25,9 @@ public class FightController : MonoBehaviour
     [SerializeField] private Animator player_anim;
     [SerializeField] private Animator opponent_anim;
 
-    public AudioInformation waitingSoundInfo;
-    public AudioInformation fightingSoundInfo;
-
+    public AudioClip BellSound;
+    public float bellVolume;
+    public float fightSoundDelay = 0;
 
 
     void Start()
@@ -48,14 +38,7 @@ public class FightController : MonoBehaviour
         opponent = GameController.curOpponent;
         numHits_player = Random.Range(2,5);
         numHits_opponent = Random.Range(2,5);
-
-        if(GetComponent<AudioSource>() != null)
-        {
-            GetComponent<AudioSource>().clip = waitingSoundInfo.clip;
-            GetComponent<AudioSource>().loop = waitingSoundInfo.loop;
-            GetComponent<AudioSource>().volume = waitingSoundInfo.volumne;
-            GetComponent<AudioSource>().Play();
-        }
+        GameController.Instance.SetBackgroundMusic(GameController.Instance.FightPrepBackground,.75f);
     }
 
     void Update(){
@@ -214,14 +197,9 @@ public class FightController : MonoBehaviour
         startRound = true;
         startButton.GetComponent<Image>().enabled = false;
         startButton.enabled = false;
-        if (GetComponent<AudioSource>() != null)
-        {
-            GetComponent<AudioSource>().Stop();
-            GetComponent<AudioSource>().clip = fightingSoundInfo.clip.MakeSubclip(fightingSoundInfo.startTime, fightingSoundInfo.endTime);
-            GetComponent<AudioSource>().loop = fightingSoundInfo.loop;
-            GetComponent<AudioSource>().volume = fightingSoundInfo.volumne;
-            GetComponent<AudioSource>().Play();
-        }
+        var audioSrc = GameController.Instance.GetComponent<AudioSource>();
+        audioSrc.volume = .2f;
+        AudioSource.PlayClipAtPoint(BellSound, transform.position, bellVolume);
      }
 
     float AttackArms(Fighter attacker, Fighter defender){

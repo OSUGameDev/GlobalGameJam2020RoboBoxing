@@ -20,6 +20,7 @@ public class PauseMenuController : MonoBehaviour
             isPaused = !isPaused;
             transform.GetChild(0).gameObject.SetActive(isPaused);
             Time.timeScale = isPaused ? 0 : 1;
+            AudioListener.pause = !AudioListener.pause;
         }
     }
     void OnLevelWasLoaded(int level)
@@ -31,6 +32,7 @@ public class PauseMenuController : MonoBehaviour
         isPaused = false;
         transform.GetChild(0).gameObject.SetActive(isPaused);
         Time.timeScale = isPaused ? 0 : 1;
+        AudioListener.pause = false;
     }
     public void ExitApplication()
     {
