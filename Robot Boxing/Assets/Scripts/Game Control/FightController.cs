@@ -21,7 +21,7 @@ public class FightController : MonoBehaviour
     private int numHits_player;
     private int turn = 0;
     private bool lostGame = false;
-    private bool hasFallen = false;
+    private bool opponentDefeated = false;
 
     [SerializeField] private Fighter opponent;
     [SerializeField] private Animator player_anim;
@@ -188,9 +188,9 @@ public class FightController : MonoBehaviour
     }
     private void CheckConditions(){
 
-        if(!hasFallen && numHits_opponent == 0 && numHits_player == 0 && opponent.IsFighterLostByDamage() || opponent.IsFighterLostByScore(GameController.player) && GameController.round >= 6){
+        if(!opponentDefeated && numHits_opponent == 0 && numHits_player == 0 && opponent.IsFighterLostByDamage() || opponent.IsFighterLostByScore(GameController.player) && GameController.round >= 6){
             opponent_anim.SetTrigger("badGuy_knockout");
-            hasFallen = true;
+            opponentDefeated = true;
             Delay(3);
         }
         if(!lostGame){
@@ -210,11 +210,9 @@ public class FightController : MonoBehaviour
                     GameController.ToggleWin(true);
                 if(GameController.loseSign.activeInHierarchy)
                     GameController.ToggleWin(false);
-
                 GameController.round++;
-                hasFallen = false;
+                opponentDefeated = false;
                 GameController.curOpponent = opponent;
-                GameController.IsPlayerWonFight();
                 GameController.LoadRepairMenu();
             }
         }
