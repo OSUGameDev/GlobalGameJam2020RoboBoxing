@@ -226,7 +226,7 @@ public class FightController : MonoBehaviour
     
     void StartButton(){
         startRound = true;
-        startButton.GetComponent<Image>().enabled = false;
+        startButton.gameObject.SetActive(false);
         startButton.enabled = false;
         var audioSrc = GameController.Instance.GetComponent<AudioSource>();
         audioSrc.volume = .2f;
