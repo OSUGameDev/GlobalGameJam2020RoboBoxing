@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
     private AudioClip currentClip;
 
     public float backgroundVolume = 0.5f;
+    public float ChatterVolume = 0.4f;
     public void SetBackgroundMusic(AudioClip clip, float volumne, float delayIfStart = 0)
     {
         var audioSrc = GetComponent<AudioSource>();
@@ -109,7 +110,7 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("Fight Scene", LoadSceneMode.Single);
     }
     public void LoadRepairMenu(){
-        SetBackgroundMusic(RepairBackground, backgroundVolume,0);
+        SetBackgroundMusic(RepairBackground, ChatterVolume, 0);
         timer = repairTime; //set the timer
         SceneManager.LoadScene("Repair Menu", LoadSceneMode.Single);
         SetBackgroundMusic(RepairBackground, backgroundVolume,0);
