@@ -104,24 +104,11 @@ public class GameController : MonoBehaviour
         IsPlayerLostGame();
     }
 
-    public void PlayerWonFight(){
-        match++;
-        curOpponent = GenerateFighter();
-        round = 0;
-    }
-    public void PlayerWonGame(){
-        EndGame(true);
-    }
-    public void PlayerLostGame(){
-        EndGame(false);
-    }
-
     public void LoadFightScene(){
         SetBackgroundMusic(FightPrepBackground, backgroundVolume,0);
         timer = 0;
         SceneManager.LoadScene("Fight Scene", LoadSceneMode.Single);
     }
-
     public void LoadRepairMenu(){
         SetBackgroundMusic(RepairBackground, ChatterVolume, 0);
         timer = repairTime; //set the timer
@@ -135,6 +122,12 @@ public class GameController : MonoBehaviour
         }
         return false;
     }
+    public void PlayerWonFight(){
+        match++;
+        curOpponent = GenerateFighter();
+        round = 0;
+        LoadRepairMenu();
+    }
 
     public bool IsPlayerWonGame(){
         //if reached past the max number of matches
@@ -143,12 +136,18 @@ public class GameController : MonoBehaviour
         }
         return false;
     }
+    public void PlayerWonGame(){
+        EndGame(true);
+    }
 
     public bool IsPlayerLostGame(){
         if(player.IsFighterLostByDamage() || round > maxRounds && player.IsFighterLostByScore(curOpponent)){
             return true;
         }
         return false;
+    }
+    public void PlayerLostGame(){
+        EndGame(false);
     }
 
     //maybe will do something special if the player has won, but for now will do nothing
@@ -158,7 +157,8 @@ public class GameController : MonoBehaviour
         curOpponent = GenerateFighter();
         match = 0;
         round = 0;
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        if(GameObject.Find("FightController").GetComponent<FightController>().delayTime <= 0)
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
     //generate a fighter with varying stats increasing by difficulty
     public Fighter GeneratePlayer(){
