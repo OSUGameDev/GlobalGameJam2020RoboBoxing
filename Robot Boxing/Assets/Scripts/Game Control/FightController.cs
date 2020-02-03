@@ -12,7 +12,7 @@ public class FightController : MonoBehaviour
     [SerializeField] private Button startButton;
     private GameController GameController;
     private float timer;
-    private float delayTime;
+    public float delayTime;
     [SerializeField] private float attackTime = 0.3f;
     private bool attacking = false;
     private bool startRound = false;
@@ -20,6 +20,7 @@ public class FightController : MonoBehaviour
     private int numHits_opponent;
     private int numHits_player;
     private int turn = 0;
+    private bool lostGame = false;
 
     [SerializeField] private Fighter opponent;
     [SerializeField] private Animator player_anim;
@@ -185,32 +186,34 @@ public class FightController : MonoBehaviour
 
     }
     private void CheckConditions(){
-        if(numHits_opponent == 0 && numHits_player == 0 && GameController.IsPlayerWonFight()){
-            GameController.ToggleWin(true);
-            Delay(3);
-        }
-        if(numHits_opponent == 0 && numHits_player == 0 && GameController.IsPlayerLostGame()){
-            player_anim.SetTrigger("player_knockout");
-            GameController.ToggleWin(false);
-            Delay(3);
-        }
-        
-        if(numHits_opponent == 0 && numHits_player == 0 && delayTime <= 0){
-            if(GameController.winSign.activeInHierarchy)
+        if(!lostGame){
+            if(numHits_opponent == 0 && numHits_player == 0 && GameController.IsPlayerWonFight()){
                 GameController.ToggleWin(true);
-            if(GameController.loseSign.activeInHierarchy)
+                Delay(3);
+            }
+            if(numHits_opponent == 0 && numHits_player == 0 && GameController.IsPlayerLostGame()){
+                lostGame = true;
+                player_anim.SetTrigger("player_knockout");
+                opponent_anim.SetTrigger("badGuy_knockout");
                 GameController.ToggleWin(false);
+                Delay(3);
+            }
+            
+            if(numHits_opponent == 0 && numHits_player == 0 && delayTime <= 0){
+                if(GameController.winSign.activeInHierarchy)
+                    GameController.ToggleWin(true);
+                if(GameController.loseSign.activeInHierarchy)
+                    GameController.ToggleWin(false);
 
-            GameController.round++;
-            GameController.curOpponent = opponent;
-
-            if(GameController.IsPlayerLostGame())
-                GameController.CheckConditions(); //If this passes then we will go to main menu instead
-            else{
+                GameController.round++;
+                GameController.curOpponent = opponent;
                 GameController.IsPlayerWonFight();
                 GameController.LoadRepairMenu();
             }
         }
+        else if(delayTime <= 0)
+            GameController.IsPlayerLostGame();
+
     }
 
     

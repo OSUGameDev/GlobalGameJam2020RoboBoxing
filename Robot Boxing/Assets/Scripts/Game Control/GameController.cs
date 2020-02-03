@@ -149,7 +149,8 @@ public class GameController : MonoBehaviour
         curOpponent = GenerateFighter();
         match = 0;
         round = 0;
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        if(GameObject.Find("FightController").GetComponent<FightController>().delayTime <= 0)
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
     //generate a fighter with varying stats increasing by difficulty
     public Fighter GeneratePlayer(){
