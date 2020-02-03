@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         loseSign.SetActive(false);
         player = GeneratePlayer();
         curOpponent = GenerateFighter();
-        
+        SetBackgroundMusic(FightPrepBackground, backgroundVolume);
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
