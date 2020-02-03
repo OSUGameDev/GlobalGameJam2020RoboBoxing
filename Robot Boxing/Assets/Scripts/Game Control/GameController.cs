@@ -104,11 +104,24 @@ public class GameController : MonoBehaviour
         IsPlayerLostGame();
     }
 
+    public void PlayerWonFight(){
+        match++;
+        curOpponent = GenerateFighter();
+        round = 0;
+    }
+    public void PlayerWonGame(){
+        EndGame(true);
+    }
+    public void PlayerLostGame(){
+        EndGame(false);
+    }
+
     public void LoadFightScene(){
         SetBackgroundMusic(FightPrepBackground, backgroundVolume,0);
         timer = 0;
         SceneManager.LoadScene("Fight Scene", LoadSceneMode.Single);
     }
+
     public void LoadRepairMenu(){
         SetBackgroundMusic(RepairBackground, ChatterVolume, 0);
         timer = repairTime; //set the timer
@@ -118,9 +131,6 @@ public class GameController : MonoBehaviour
 
     public bool IsPlayerWonFight(){
         if(round > maxRounds && curOpponent.IsFighterLostByScore(player) || curOpponent.IsFighterLostByDamage()){
-            match++;
-            curOpponent = GenerateFighter();
-            round = 0;
             return true;
         }
         return false;
@@ -129,7 +139,6 @@ public class GameController : MonoBehaviour
     public bool IsPlayerWonGame(){
         //if reached past the max number of matches
         if(match > maxMatches){
-            EndGame(true);
             return true;
         }
         return false;
@@ -137,7 +146,6 @@ public class GameController : MonoBehaviour
 
     public bool IsPlayerLostGame(){
         if(player.IsFighterLostByDamage() || round > maxRounds && player.IsFighterLostByScore(curOpponent)){
-            EndGame(false);
             return true;
         }
         return false;
@@ -150,8 +158,7 @@ public class GameController : MonoBehaviour
         curOpponent = GenerateFighter();
         match = 0;
         round = 0;
-        if(GameObject.Find("FightController").GetComponent<FightController>().delayTime <= 0)
-            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
     //generate a fighter with varying stats increasing by difficulty
     public Fighter GeneratePlayer(){

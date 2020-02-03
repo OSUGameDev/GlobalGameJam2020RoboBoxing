@@ -31,6 +31,7 @@ public class FightController : MonoBehaviour
     public float bellVolume;
     public float hitVolume = 0.5f;
     public float fightSoundDelay = 0;
+    public bool endResult = false;
 
     [SerializeField] public AudioClip[] hitNoises;
     [SerializeField] public AudioClip[] voiceNoises;
@@ -55,9 +56,8 @@ public class FightController : MonoBehaviour
                 if(startRound){
                     CalculateHits();
                 }
-                
+            CheckConditions();
         }
-        CheckConditions();
     }
 
     void PlayHit(){
@@ -87,40 +87,7 @@ public class FightController : MonoBehaviour
         if(numHits_player > 0 && delayTime <= 0){
             int attack = 0;
             float damage = 0;
-            switch (0){
-                case 0: //attacks any part randomly
-                    attack = Random.Range(0,6);
-                    break;
-                case 1: //attacks any part that the opponent uses to attack
-                    attack = Random.Range(0,1);
-                    break;
-                case 2: //attacks any part that the opponent uses for accuracy
-                    attack = Random.Range(2,3);
-                    break;
-                case 3: //attacks any part that the opponent uses to dodge
-                    attack = Random.Range(4,5);
-                    break;
-            }
-            switch (attack){
-                case 0:
-                    damage =AttackArms(GameController.player,opponent);
-                    break;
-                case 1:
-                    damage =AttackLegs(GameController.player,opponent);
-                    break;
-                case 2:
-                    damage =AttackCables(GameController.player,opponent);
-                    break;
-                case 3:
-                    damage =AttackCoolant(GameController.player,opponent);
-                    break;
-                case 4:
-                    damage =AttackEyes(GameController.player,opponent);
-                    break;
-                case 5:
-                    damage =AttackCircuits(GameController.player,opponent);
-                    break;
-            }
+            damage =AttackArms(GameController.player,opponent);
             //Hit sounds go here
             numHits_player--;
             Delay(attackTime);
@@ -139,54 +106,22 @@ public class FightController : MonoBehaviour
             //choose part to attack based on focus (set either randomly or by player)
             int attack = 0;
             float damage;
-            switch (0){
-                case 0: //attacks any part randomly
-                    attack = Random.Range(0,6);
-                    break;
-                case 1: //attacks any part that the opponent uses to attack
-                    attack = Random.Range(0,2);
-                    break;
-                case 2: //attacks any part that the opponent uses for accuracy
-                    attack = Random.Range(2,4);
-                    break;
-                case 3: //attacks any part that the opponent uses to dodge
-                    attack = Random.Range(4,6);
-                    break;
-            }
-            
-            switch (attack){
-                case 0:
-                    damage = AttackArms(opponent,GameController.player);
-                    break;
-                case 1:
-                    damage =AttackLegs(opponent,GameController.player);
-                    break;
-                case 2:
-                    damage =AttackCables(opponent,GameController.player);
-                    break;
-                case 3:
-                    damage =AttackCircuits(opponent,GameController.player);
-                    break;
-                case 4:
-                    damage =AttackEyes(opponent,GameController.player);
-                    break;
-                case 5:
-                    damage =AttackCoolant(opponent,GameController.player);
-                    break;
-            }
-                if(attack >= 3)
-                    opponent_anim.Play("enemy_jab");
-                else
-                    opponent_anim.Play("badguy_swipe");
-                if(hitNoises.Length > 0)
-                    PlayHit();
-                numHits_opponent--;
-                Delay(attackTime);
-                turn = 0;
-        }
+            damage = AttackArms(opponent,GameController.player);
+
+            if(attack >= 3)
+                opponent_anim.Play("enemy_jab");
+            else
+                opponent_anim.Play("badguy_swipe");
+            if(hitNoises.Length > 0)
+                PlayHit();
+            numHits_opponent--;
+            Delay(attackTime);
+            turn = 0;
+    }
 
     }
     private void CheckConditions(){
+<<<<<<< Updated upstream
 
         if(!opponentDefeated && numHits_opponent == 0 && numHits_player == 0 && opponent.IsFighterLostByDamage() || opponent.IsFighterLostByScore(GameController.player) && GameController.round >= 6){
             opponent_anim.SetTrigger("badGuy_knockout");
@@ -194,16 +129,23 @@ public class FightController : MonoBehaviour
             Delay(3);
         }
         if(!lostGame){
+=======
+        if(!endResult){
+>>>>>>> Stashed changes
             if(numHits_opponent == 0 && numHits_player == 0 && GameController.IsPlayerWonFight()){
                 GameController.ToggleWin(true);
+                opponent_anim.SetTrigger("badGuy_knockout");
                 Delay(3);
+                endResult = true;
             }
             if(numHits_opponent == 0 && numHits_player == 0 && GameController.IsPlayerLostGame()){
                 lostGame = true;
                 player_anim.SetTrigger("player_knockout");
                 GameController.ToggleWin(false);
                 Delay(3);
+                endResult = true;
             }
+<<<<<<< Updated upstream
             
             if(numHits_opponent == 0 && numHits_player == 0 && delayTime <= 0){
                 if(GameController.winSign.activeInHierarchy)
@@ -212,12 +154,31 @@ public class FightController : MonoBehaviour
                     GameController.ToggleWin(false);
                 GameController.round++;
                 opponentDefeated = false;
+=======
+        }
+        else if(delayTime <= 0 && numHits_opponent == 0 && numHits_player == 0){
+            endResult = false;
+            //Turn off any signs
+            if(GameController.winSign.activeInHierarchy)
+                GameController.ToggleWin(true);
+            if(GameController.loseSign.activeInHierarchy)
+                GameController.ToggleWin(false);
+
+            if(GameController.IsPlayerWonFight()){
+                GameController.PlayerWonFight();
+                GameController.LoadRepairMenu();
+            }
+            else if(GameController.IsPlayerLostGame()){
+                GameController.PlayerLostGame();
+                
+            }
+            else{
+                GameController.round++;
+>>>>>>> Stashed changes
                 GameController.curOpponent = opponent;
                 GameController.LoadRepairMenu();
             }
         }
-        else if(delayTime <= 0)
-            GameController.IsPlayerLostGame();
 
     }
 
